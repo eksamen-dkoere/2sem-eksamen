@@ -1,0 +1,77 @@
+:root {
+  /* COLORS */
+  /* NEUTRAL */
+  --white: #fdfaf0;
+  --neutral-200: #dddbd5;
+  --neutral-300: #c6c3b9;
+  --neutral-400: #fafb9d;
+  --neutral-500: #8c8773;
+  --neutral--600: #706c5c;
+  --neutral-700: #545145;
+  --neutral--800: #38362e;
+  --black: #131313;
+
+  /* RED */
+  --red-100: #ffe5e7;
+  --red-200: #ffb2b7;
+  --red-300: #ff8088;
+  --red-400: #ff4d58;
+  --red-500: #f70010;
+  --red-600: #cc000d;
+  --red-700: #99000a;
+  --red-800: #660007;
+  --red-900: #330003;
+
+  /* BLUE */
+  --blue-100: #e5f9ff;
+  --blue-200: #b3edff;
+  --blue-300: #80e1ff;
+  --blue-400: #4dd5ff;
+  --blue-500: #00bbef;
+  --blue-600: #00a0cc;
+  --blue-700: #007899;
+  --blue-800: #005066;
+  --blue-900: #002833;
+
+  /* GREEN */
+  --green-100: #eafaec;
+  --green-200: #c1f0c7;
+  --green-300: #98e6a2;
+  --green-400: #5edc6c;
+  --green-500: #32cd46;
+  --green-600: #28a438;
+  --green-700: #1e7b2a;
+  --green-800: #14521c;
+  --green-900: #0a290e;
+
+  /* YELLOW */
+  --yellow-100: #fff6e5;
+  --yellow-200: #ffe5b3;
+  --yellow-300: #ffd78e;
+  --yellow-400: #ffc04d;
+  --yellow-500: #ffa500;
+  --yellow-600: #cc8400;
+  --yellow-700: #996300;
+  --yellow-800: #664200;
+  --yellow-900: #332100;
+
+  /* SPACING */
+  --gap-xxs: 10px;
+  --gap-xs: 15px;
+  --gap-s: 25px;
+  --gap-m: 35px;
+  --gap-l: 40px;
+  --gap-xl: 50px;
+  --gap-xxl: 100px;
+
+  /* BORDER RADIUS */
+  --radius-s: 10px;
+  --radius-m: 15px;
+  --radius-l: 20px;
+  --radius-xl: 30px;
+
+  /* EFFECTS */
+  --dropshadow: 5px 4px 4px rgba(19, 19, 19, 0.25);
+  --innershadow-light: inset 5px 4px 4px rgba(19, 19, 19, 0.25);
+  --innershadow-dark: inset 5px 4px 4px rgba(253, 250, 240, 0.25);
+}
