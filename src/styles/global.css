@@ -1,0 +1,20 @@
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+body {
+  background-color: light-dark(var(--white), var(--black));
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 100vh;
+}
