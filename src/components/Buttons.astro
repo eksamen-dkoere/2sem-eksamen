@@ -1,0 +1,25 @@
+---
+import '../layouts/Layout.astro'
+
+const { text, variant } = Astro.props
+---
+
+<button class={`button ${variant}`}>
+  {text}
+</button>
+
+<style>
+.button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.red500 {
+  background-color: #F70010;
+  color: FDFAF0;
+}
+.
+</style>
