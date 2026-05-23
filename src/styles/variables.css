@@ -72,6 +72,8 @@
 
   /* EFFECTS */
   --dropshadow: 5px 4px 4px rgba(19, 19, 19, 0.25);
+  --dropshadow-small: 2px 1px 4px rgba(19, 19, 19, 0.25);
   --innershadow-light: inset 5px 4px 4px rgba(19, 19, 19, 0.25);
   --innershadow-dark: inset 5px 4px 4px rgba(253, 250, 240, 0.25);
+  --innershadow-dark-small: inset 2px 1px 4px rgba(253, 250, 240, 0.25);
 }
