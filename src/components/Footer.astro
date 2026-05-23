@@ -1,183 +1,232 @@
 ---
 //@ts-nocheck
 import '../layouts/Layout.astro';
-// Du kan importere dine billeder her, hvis de ligger i /src, eller blot referere til dem direkte, hvis de ligger i /public.
-// I dette eksempel antager jeg, at de ligger i /public mappen.
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
 ---
 
 <footer class="site-footer">
-  <div class="footer-brand">
-    <div class="brand-logo-text">Dankort Øremærket</div>
-  </div>
+  <div class="magnetic-strip"></div>
 
-  <div class="footer-nav">
-    
-    <details class="footer-section" open>
-      <summary>Dankort Øremærket <span class="icon">+</span></summary>
-      <ul class="footer-links">
-        <li><a href="/">Forside</a></li>
-        <li><a href="/find">Find dit kort</a></li>
-        <li><a href="/sneak-peak">Sneak peak</a></li>
-        <li><a href="/om-os">Om os</a></li>
-      </ul>
-    </details>
-
-    <details class="footer-section" open>
-      <summary>Kontakt Dankort <span class="icon">+</span></summary>
-      <div class="footer-links contact-info">
-        <p>telefon åben: 08:00 - 15:00</p>
-        <p><a href="tel:+4512345678">+45 12 34 56 78</a></p>
-        <p><a href="mailto:dankort@øremærket.dk">dankort@øremærket.dk</a></p>
-      </div>
-    </details>
-
-    <details class="footer-section" open>
-      <summary>Dankort <span class="icon">+</span></summary>
-      <ul class="footer-links">
-        <li><a href="/om">Om Dankort</a></li>
-        <li><a href="/privatliv">Privatlivspolitikker</a></li>
-        <li><a href="/cookies">Cookies</a></li>
-      </ul>
-    </details>
-
-  </div>
-
-  <div class="footer-bottom">
-    <div class="social-links">
-      <a href="https://tiktok.com" aria-label="TikTok" class="social-icon tiktok"></a>
-      <a href="https://instagram.com" aria-label="Instagram" class="social-icon instagram"></a>
-      <a href="https://facebook.com" aria-label="Facebook" class="social-icon facebook"></a>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="brand-logo-text special_text">Dankort Øremærket</div>
     </div>
-    
-    <div class="dk-logo">
-      <img src="/Logo.svg" alt="Dankort Logo" />
+
+    <div class="footer-nav">
+      
+      <div class="footer-section">
+        <button class="accordion-trigger" aria-expanded="false">
+          Dankort Øremærket <span class="icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <ul class="footer-links">
+            <li><a href="/">Forside</a></li>
+            <li><a href="/find">Find dit kort</a></li>
+            <li><a href="/sneak-peak">Sneak peak</a></li>
+            <li><a href="/om-os">Om os</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <button class="accordion-trigger" aria-expanded="false">
+          Kontakt Dankort <span class="icon">+</span>
+        </button>
+        <div class="accordion-content contact-info">
+          <p>Telefon åben: 08:00 - 15:00</p>
+          <p><a href="tel:+4512345678">+45 12 34 56 78</a></p>
+          <p><a href="mailto:dankort@øremærket.dk">dankort@øremærket.dk</a></p>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <button class="accordion-trigger" aria-expanded="false">
+          Dankort <span class="icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <ul class="footer-links">
+            <li><a href="/om">Om Dankort</a></li>
+            <li><a href="/privatliv">Privatlivspolitikker</a></li>
+            <li><a href="/cookies">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://tiktok.com" aria-label="TikTok" class="social-icon tiktok"></a>
+        <a href="https://instagram.com" aria-label="Instagram" class="social-icon instagram"></a>
+        <a href="https://facebook.com" aria-label="Facebook" class="social-icon facebook"></a>
+      </div>
+      
+      <div class="dk-logo">
+        <img src="/Logo.svg" alt="Dankort Logo" />
+      </div>
     </div>
   </div>
 </footer>
 
 <script>
-  // En lille funktion der styrer harmonika-effekten baseret på skærmstørrelse
-  function handleAccordion() {
-    const sections = document.querySelectorAll('.footer-section');
-    const isMobile = window.innerWidth <= 768; // Definer dit mobil-breakpoint
+  const sections = document.querySelectorAll('.footer-section');
 
+  function handleAccordion() {
+    const isMobile = window.innerWidth <= 768;
     sections.forEach(section => {
+      const trigger = section.querySelector('.accordion-trigger');
+      // Hvis trigger ikke findes, så spring denne sektion over (Fixer TypeScript fejlen)
+      if (!trigger) return; 
+      
+      const icon = trigger.querySelector('.icon');
+      
       if (isMobile) {
-        // Fjern 'open' på mobil som standard, så de lukkes i starten
-        section.removeAttribute('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        if (icon) icon.textContent = '+';
       } else {
-        // Sørg for at de altid er foldet ud på desktop
-        section.setAttribute('open', '');
+        trigger.setAttribute('aria-expanded', 'true');
       }
     });
   }
 
-  // Kør ved opstart og når vinduet ændrer størrelse
-  handleAccordion();
-  window.addEventListener('resize', handleAccordion);
+  sections.forEach(section => {
+    const trigger = section.querySelector('.accordion-trigger');
+    if (!trigger) return; // Fixer TypeScript fejlen ved klik-eventet
 
-  // Forhindr klik på <summary> i at lukke menuen, hvis vi er på desktop
-  document.querySelectorAll('.footer-section summary').forEach(summary => {
-    summary.addEventListener('click', (e) => {
-      if (window.innerWidth > 768) {
-        e.preventDefault();
+    trigger.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        
+        document.querySelectorAll('.accordion-trigger').forEach(btn => {
+          btn.setAttribute('aria-expanded', 'false');
+          const icon = btn.querySelector('.icon');
+          if (icon) icon.textContent = '+';
+        });
+
+        trigger.setAttribute('aria-expanded', String(!isExpanded));
+        const icon = trigger.querySelector('.icon');
+        if (icon) icon.textContent = !isExpanded ? '—' : '+';
       }
     });
   });
+
+  handleAccordion();
+  window.addEventListener('resize', handleAccordion);
 </script>
 
 <style>
-  /* ==========================================
-     1. GLOBALE / MOBILE FIRST STYLES
-     ========================================== */
   .site-footer {
+   
     width: 100%;
-    /* Bruger light-dark() som du startede på, med fallback til dine variable */
-    background-color: light-dark(var(--neutral-200, #E6E4E2), var(--neutral-800, #2C2A29));
-    color: light-dark(#000000, #FFFFFF);
+    background-color: light-dark(var(--neutral-200), var(--neutral-800));
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    padding: 2rem 1.5rem;
+    padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, sans-serif;
+    overflow: hidden;
   }
 
-  /* Det håndskrevne logo i toppen */
+  .magnetic-strip {
+    width: 100%;
+    height: 3rem;
+    background-color: var(--black);
+    margin-top: 3rem; 
+    margin-bottom: 1rem; 
+  }
+
+  .footer-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+
   .footer-brand {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
+  
   .brand-logo-text {
-    background: #FFFDF9; /* Den lyse baggrund bag teksten */
-    color: #000000;
+    background: var(--white);
+    color: var(--black);
     display: inline-block;
-    padding: 0.5rem 2rem;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Udskift med din rigtige håndskrevne font */
+    padding: 0.5rem 5rem;
     font-size: 1.2rem;
+    min-width: 220px;
+    box-sizing: border-box;
+    text-align: center;
   }
 
-  /* Harmonika (Mobil-first) */
   .footer-nav {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .footer-section {
-    border-bottom: 1px solid light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.1));
-    padding-bottom: 0.75rem;
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 35px;
   }
 
-  .footer-section summary {
-    list-style: none; /* Skjuler standard pil */
+  .accordion-trigger {
+    background: none;
+    border: none;
+    color: inherit;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
-  
-  /* Skjul standard pil i Safari */
-  .footer-section summary::-webkit-details-marker {
-    display: none;
+    width: 45%; 
+    flex-shrink: 0;
+    font-family: inherit;
   }
 
-  .footer-section[open] .icon {
-    transform: rotate(45deg); /* Laver + om til et x eller bare indikerer åben */
+  .accordion-trigger .icon {
+    margin-left: auto;
+    padding-right: 1rem;
+  }
+
+  .accordion-content {
+    display: none; 
+    width: 55%; 
+    padding-left: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .accordion-trigger[aria-expanded="true"] + .accordion-content {
+    display: block;
   }
 
   .footer-links {
     list-style: none;
     padding: 0;
-    margin: 0.75rem 0 0 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
-  .footer-links a {
+  .footer-links a, .contact-info p {
     color: inherit;
     text-decoration: none;
-    opacity: 0.8;
-    font-size: 0.95rem;
-  }
-  .footer-links a:hover {
-    opacity: 1;
-  }
-
-  .contact-info p {
     margin: 0;
-    font-size: 0.95rem;
-    opacity: 0.8;
   }
 
-  /* Bund-sektion (Socials og DK logo) */
   .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
   .social-links {
@@ -185,7 +234,6 @@ import '../layouts/Layout.astro';
     gap: 1.25rem;
   }
 
-  /* Smart håndtering af ikoner baseret på Light/Dark mode via CSS variabler */
   .social-icon {
     width: 28px;
     height: 28px;
@@ -195,19 +243,12 @@ import '../layouts/Layout.astro';
     background-position: center;
   }
 
-  /* Dynamiske billedstier alt efter light-dark mode */
-  .tiktok {
-    background-image: light-dark(url('/tiktok-sort-logo.svg'), url('/tiktok-logo.svg'));
-  }
-  .instagram {
-    background-image: light-dark(url('/instagram-sort-logo.svg'), url('/instagram-logo.svg'));
-  }
-  .facebook {
-    background-image: light-dark(url('/facebook-sort-logo.svg'), url('/facebook-logo.svg'));
-  }
+  .tiktok { background-image: light-dark(url('/tiktok-sort-logo.svg'), url('/tiktok-logo.svg')); }
+  .instagram { background-image: light-dark(url('/instagram-sort-logo.svg'), url('/instagram-logo.svg')); }
+  .facebook { background-image: light-dark(url('/facebook-sort-logo.svg'), url('/facebook-logo.svg')); }
 
   .dk-logo img {
-    height: 35px; /* Juster så det passer med dit design */
+    height: 35px;
     width: auto;
   }
 
@@ -215,38 +256,48 @@ import '../layouts/Layout.astro';
      2. DESKTOP STYLES (Fra 768px og op)
      ========================================== */
   @media (min-width: 769px) {
-    .site-footer {
-      padding: 3rem 4rem;
+    .footer-content {
+      padding: 0 4rem 3rem 4rem;
     }
 
-    /* Gør navigations-sektionen til 3 kolonner i stedet for en liste */
+    .magnetic-strip {
+      margin-bottom: 3.5rem;
+    }
+
+    .brand-logo-text {
+      min-width: 450px; 
+    }
+
     .footer-nav {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start; 
+      gap: 4rem;
       margin-bottom: 4rem;
+      max-width: 800px;
     }
 
     .footer-section {
-      border-bottom: none;
-      padding-bottom: 0;
+      flex-direction: column; 
+      width: auto; 
+      min-height: auto;
     }
 
-    /* Skjul plus-tegnet på desktop */
-    .footer-section summary .icon {
-      display: none;
-    }
-
-    /* Fjern pointer-cursor, da man ikke kan klikke på desktop */
-    .footer-section summary {
+    .accordion-trigger {
+      width: auto;
       cursor: default;
       font-size: 1rem;
-      text-transform: none;
+      margin-bottom: 1rem;
     }
 
-    .footer-links {
-      margin-top: 1rem;
-      gap: 0.75rem;
+    .accordion-trigger .icon {
+      display: none; 
+    }
+
+    .accordion-content {
+      display: block !important; 
+      width: auto;
+      padding-left: 0;
     }
   }
 </style>
