@@ -1,0 +1,252 @@
+---
+//@ts-nocheck
+import '../layouts/Layout.astro';
+// Du kan importere dine billeder her, hvis de ligger i /src, eller blot referere til dem direkte, hvis de ligger i /public.
+// I dette eksempel antager jeg, at de ligger i /public mappen.
+---
+
+<footer class="site-footer">
+  <div class="footer-brand">
+    <div class="brand-logo-text">Dankort Øremærket</div>
+  </div>
+
+  <div class="footer-nav">
+    
+    <details class="footer-section" open>
+      <summary>Dankort Øremærket <span class="icon">+</span></summary>
+      <ul class="footer-links">
+        <li><a href="/">Forside</a></li>
+        <li><a href="/find">Find dit kort</a></li>
+        <li><a href="/sneak-peak">Sneak peak</a></li>
+        <li><a href="/om-os">Om os</a></li>
+      </ul>
+    </details>
+
+    <details class="footer-section" open>
+      <summary>Kontakt Dankort <span class="icon">+</span></summary>
+      <div class="footer-links contact-info">
+        <p>telefon åben: 08:00 - 15:00</p>
+        <p><a href="tel:+4512345678">+45 12 34 56 78</a></p>
+        <p><a href="mailto:dankort@øremærket.dk">dankort@øremærket.dk</a></p>
+      </div>
+    </details>
+
+    <details class="footer-section" open>
+      <summary>Dankort <span class="icon">+</span></summary>
+      <ul class="footer-links">
+        <li><a href="/om">Om Dankort</a></li>
+        <li><a href="/privatliv">Privatlivspolitikker</a></li>
+        <li><a href="/cookies">Cookies</a></li>
+      </ul>
+    </details>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="social-links">
+      <a href="https://tiktok.com" aria-label="TikTok" class="social-icon tiktok"></a>
+      <a href="https://instagram.com" aria-label="Instagram" class="social-icon instagram"></a>
+      <a href="https://facebook.com" aria-label="Facebook" class="social-icon facebook"></a>
+    </div>
+    
+    <div class="dk-logo">
+      <img src="/Logo.svg" alt="Dankort Logo" />
+    </div>
+  </div>
+</footer>
+
+<script>
+  // En lille funktion der styrer harmonika-effekten baseret på skærmstørrelse
+  function handleAccordion() {
+    const sections = document.querySelectorAll('.footer-section');
+    const isMobile = window.innerWidth <= 768; // Definer dit mobil-breakpoint
+
+    sections.forEach(section => {
+      if (isMobile) {
+        // Fjern 'open' på mobil som standard, så de lukkes i starten
+        section.removeAttribute('open');
+      } else {
+        // Sørg for at de altid er foldet ud på desktop
+        section.setAttribute('open', '');
+      }
+    });
+  }
+
+  // Kør ved opstart og når vinduet ændrer størrelse
+  handleAccordion();
+  window.addEventListener('resize', handleAccordion);
+
+  // Forhindr klik på <summary> i at lukke menuen, hvis vi er på desktop
+  document.querySelectorAll('.footer-section summary').forEach(summary => {
+    summary.addEventListener('click', (e) => {
+      if (window.innerWidth > 768) {
+        e.preventDefault();
+      }
+    });
+  });
+</script>
+
+<style>
+  /* ==========================================
+     1. GLOBALE / MOBILE FIRST STYLES
+     ========================================== */
+  .site-footer {
+    width: 100%;
+    /* Bruger light-dark() som du startede på, med fallback til dine variable */
+    background-color: light-dark(var(--neutral-200, #E6E4E2), var(--neutral-800, #2C2A29));
+    color: light-dark(#000000, #FFFFFF);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+  }
+
+  /* Det håndskrevne logo i toppen */
+  .footer-brand {
+    margin-bottom: 2rem;
+  }
+  .brand-logo-text {
+    background: #FFFDF9; /* Den lyse baggrund bag teksten */
+    color: #000000;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Udskift med din rigtige håndskrevne font */
+    font-size: 1.2rem;
+  }
+
+  /* Harmonika (Mobil-first) */
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-section {
+    border-bottom: 1px solid light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+    padding-bottom: 0.75rem;
+  }
+
+  .footer-section summary {
+    list-style: none; /* Skjuler standard pil */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  
+  /* Skjul standard pil i Safari */
+  .footer-section summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .footer-section[open] .icon {
+    transform: rotate(45deg); /* Laver + om til et x eller bare indikerer åben */
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+    font-size: 0.95rem;
+  }
+  .footer-links a:hover {
+    opacity: 1;
+  }
+
+  .contact-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  /* Bund-sektion (Socials og DK logo) */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  /* Smart håndtering af ikoner baseret på Light/Dark mode via CSS variabler */
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Dynamiske billedstier alt efter light-dark mode */
+  .tiktok {
+    background-image: light-dark(url('/tiktok-sort-logo.svg'), url('/tiktok-logo.svg'));
+  }
+  .instagram {
+    background-image: light-dark(url('/instagram-sort-logo.svg'), url('/instagram-logo.svg'));
+  }
+  .facebook {
+    background-image: light-dark(url('/facebook-sort-logo.svg'), url('/facebook-logo.svg'));
+  }
+
+  .dk-logo img {
+    height: 35px; /* Juster så det passer med dit design */
+    width: auto;
+  }
+
+  /* ==========================================
+     2. DESKTOP STYLES (Fra 768px og op)
+     ========================================== */
+  @media (min-width: 769px) {
+    .site-footer {
+      padding: 3rem 4rem;
+    }
+
+    /* Gør navigations-sektionen til 3 kolonner i stedet for en liste */
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-section {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    /* Skjul plus-tegnet på desktop */
+    .footer-section summary .icon {
+      display: none;
+    }
+
+    /* Fjern pointer-cursor, da man ikke kan klikke på desktop */
+    .footer-section summary {
+      cursor: default;
+      font-size: 1rem;
+      text-transform: none;
+    }
+
+    .footer-links {
+      margin-top: 1rem;
+      gap: 0.75rem;
+    }
+  }
+</style>
