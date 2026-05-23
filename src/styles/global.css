@@ -13,6 +13,9 @@ html.dark {
 body {
   background-color: light-dark(var(--white), var(--black));
   overflow-x: hidden;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 main {

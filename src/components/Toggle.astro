@@ -1,0 +1,98 @@
+---
+//@ts-nocheck
+---
+
+<button class="darkmode-toggle glass" aria-label="Skift mellem mørk tilstand">
+    <span class="toggle-thumb glass"></span>
+</button>
+
+<style>
+    .darkmode-toggle {  
+        width: 50px;
+        height: 30px;
+        border-radius: var(--radius-xl);
+        background-color: rgba(211, 219, 213, 0.2);
+        background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2711%27 height=%2711%27 viewBox=%270%200%2011%2011%27 fill=%27none%27%3E%3Cpath d=%27M5.5%200.5V1.05556M5.5%209.94444V10.5M1.05556%205.5H0.5M2.34118%202.34118L1.88889%201.88889M8.65883%202.34118L9.11111%201.88889M2.34118%208.66111L1.88889%209.11117M8.65883%208.66111L9.11111%209.11117M10.5%205.5H9.94444M7.72222%205.5C7.72222%206.72728%206.72728%207.72222%205.5%207.72222C4.2727%207.72222%203.27778%206.72728%203.27778%205.5C3.27778%204.2727%204.2727%203.27778%205.5%203.27778C6.72728%203.27778%207.72222%204.2727%207.72222%205.5Z%27 stroke=%27%23131313%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: 30px center;
+        background-size: 12px 12px;
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+        position: relative;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .darkmode-toggle:hover{
+        background-color: rgba(211, 219, 213, 0.5);
+        .toggle-thumb{
+            background-color: rgb(211, 219, 213, 0.5);
+        }
+    }
+
+    .toggle-thumb {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgb(211, 219, 213, 0.2);
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+        top: 5px;
+        left: 5px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* DARK MODE */
+
+    html.dark .darkmode-toggle {
+        background-color: rgb(56, 54, 46, 0.2);
+        background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 11 11%27%3E%3Cpath d=%27M0.5 5.31374C0.5 8.17805 2.82158 10.5 5.68538 10.5C7.86738 10.5 9.73458 9.15203 10.5 7.24332C9.90276 7.48338 9.24923 7.61869 8.56614 7.61869C5.70231 7.61869 3.38077 5.29674 3.38077 2.43244C3.38077 1.75244 3.51405 1.09505 3.75194 0.5C1.84574 1.2666 0.5 3.13298 0.5 5.31374Z%27 stroke=%27%23FDFAF0%27 stroke-width=%271%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: 12px 12px;
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+    }
+    html.dark .darkmode-toggle:hover {
+        background-color: rgba(56, 54, 46, 0.50);
+        .toggle-thumb {
+            background: rgba(198, 195, 185, 0.50);
+        }
+    }
+
+    html.dark .toggle-thumb {
+        transform: translateX(20px);
+        background-color: rgba(198, 195, 185, 0.2);
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+    }
+
+    /* MOBILE */
+    @media (max-width: 425px) {
+        .darkmode-toggle{
+            width: 42px;
+            height: 25px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%278%27 height=%278%27 viewBox=%270 0 11 11%27 fill=%27none%27%3E%3Cpath d=%27M5.5%200.5V1.05556M5.5%209.94444V10.5M1.05556%205.5H0.5M2.34118%202.34118L1.88889%201.88889M8.65883%202.34118L9.11111%201.88889M2.34118%208.66111L1.88889%209.11117M8.65883%208.66111L9.11111%209.11117M10.5%205.5H9.94444M7.72222%205.5C7.72222%206.72728%206.72728%207.72222%205.5%207.72222C4.2727%207.72222%203.27778%206.72728%203.27778%205.5C3.27778%204.2727%204.2727%203.27778%205.5%203.27778C6.72728%203.27778%207.72222%204.2727%207.72222%205.5Z%27 stroke=%27%23131313%27 stroke-width=%270.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E');
+            background-size: 8px 8px;
+            background-position: 26px center;
+        }
+
+        html.dark .darkmode-toggle {
+            width: 42px;
+            height: 25px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%278%27 height=%278%27 viewBox=%270 0 11 11%27 fill=%27none%27%3E%3Cpath d=%27M0.5 5.31374C0.5 8.17805 2.82158 10.5 5.68538 10.5C7.86738 10.5 9.73458 9.15203 10.5 7.24332C9.90276 7.48338 9.24923 7.61869 8.56614 7.61869C5.70231 7.61869 3.38077 5.29674 3.38077 2.43244C3.38077 1.75244 3.51405 1.09505 3.75194 0.5C1.84574 1.2666 0.5 3.13298 0.5 5.31374Z%27 stroke=%27%23FDFAF0%27 stroke-width=%270.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E');
+            background-size: 8px 8px;
+            background-position: 8px center;
+        }
+
+        .toggle-thumb {
+            width: 17px;
+            height: 17px; 
+            top: 3.5px;
+            left: 4px;
+        }
+
+        html.dark .toggle-thumb {
+            transform: translateX(16px);
+        }
+    }
+
+
+</style>

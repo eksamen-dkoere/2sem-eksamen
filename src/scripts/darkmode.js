@@ -1,6 +1,8 @@
 // DARK MODE
 const html = document.querySelector("html");
-const btn = document.querySelector("#toggle");
+const btn = document.querySelector(".darkmode-toggle");
+
+console.log(btn);
 
 // Check localStorage on page load
 if (localStorage.getItem("darkMode") === "enabled") {
