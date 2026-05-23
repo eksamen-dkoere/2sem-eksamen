@@ -1,25 +1,48 @@
 ---
+//@ts-nocheck
 import '../layouts/Layout.astro'
 
-const { text, variant } = Astro.props
+const { text, variant, link} = Astro.props
 ---
 
 <button class={`button ${variant}`}>
-  {text}
+  <h5>{text}</h5>
 </button>
 
 <style>
 .button {
-  padding: 10px 25px;
+  padding: var(--gap-xxs) var(--gap-s);
   border: none;
-  border-radius: 20px;
+  border-radius: var(--radius-l);
   cursor: pointer;
-  font-size: 14px;
 }
 
 .red500 {
-  background-color: #F70010;
-  color: FDFAF0;
+  background-color: rgba(247, 0, 16, 0.8);
+  color: var(--white);
 }
-.
+.gray {
+  background-color: rgba(44, 42, 35, 0.2);
+  color: var(--white);
+
+}
+.white {
+  background-color: rgba(253, 250, 240, 0.2);
+  color: var(--black);
+}
+.red700 {
+    background-color: rgba(153, 0, 10, 0.8);
+    color: var(--white);
+}
+
+.blue600 {
+    background-color: rgba(0, 160, 204, 0.5);
+    color: var(--white);  
+}
+.blue300 {
+    background-color: rgba(128, 225, 255, 0.5);
+    color: var(--black);
+
+}
+
 </style>
