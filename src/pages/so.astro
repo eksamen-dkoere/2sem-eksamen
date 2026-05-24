@@ -1,8 +1,55 @@
 ---
 //@ts-nocheck
 import Layout from '../layouts/Layout.astro';
+import Buttons from '../components/Buttons.astro';
+import Accordion from '../components/Accordion.astro';
 ---
 
 <Layout>
 
+<section class="test-section">
+
+  <h2>Buttons</h2>
+
+  <Buttons
+    text="Primary Button"
+    variant="red500"
+    link="/"
+  />
+
+  <Buttons
+    text="Secondary Button"
+    variant="blue600"
+  />
+
+  <Buttons
+    text="Neutral Button"
+    variant="gray"
+  />
+
+
+  <h2>Accordion</h2>
+
+  <Accordion
+    title="Betal smart"
+    content="Dankort gør betalinger nemme og hurtige."
+    variant="lightmode"
+  />
+
+  <Accordion
+    title="Betal sikkert"
+    content="Alle betalinger er beskyttet."
+    variant="darkmode"
+  />
+
+</section>
+
 </Layout>
+
+<style>
+
+.test-section {
+  padding: 2rem;
+}
+
+</style>
