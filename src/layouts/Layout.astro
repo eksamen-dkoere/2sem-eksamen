@@ -4,6 +4,8 @@ import '../styles/variables.css'
 import '../styles/typography.css'
 import '../styles/effects.css'
 import '../styles/global.css'
+import Navigation from '../components/Navigation.astro'
+import Footer from '../components/Footer.astro'
 ---
 <!doctype html>
 <html lang="da">
@@ -24,7 +26,9 @@ import '../styles/global.css'
 		<title>Dankort Øremærket</title>
 	</head>
 	<body>
+		<Navigation/>
 		<slot />
+		<Footer/>
 		<script type="module" src="/src/scripts/darkmode.js"></script>
 	</body>
 </html>

@@ -29,7 +29,8 @@ h4 {
   font-weight: 700;
 }
 
-h5 {
+h5,
+a {
   font-family: "Raleway", "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -76,7 +77,8 @@ a {
     font-size: 18px;
   }
 
-  h5 {
+  h5,
+  a {
     font-size: 14px;
   }
 
