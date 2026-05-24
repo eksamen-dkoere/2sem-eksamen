@@ -4,10 +4,15 @@ import '../layouts/Layout.astro'
 
 const { text, variant, link} = Astro.props
 ---
-
-<button class={`button ${variant}`}>
-  <h5>{text}</h5>
-</button>
+{link ? (
+  <a href={link} class={`button ${variant}`}>
+    <h5>{text}</h5>
+  </a>
+) : (
+  <button class={`button ${variant}`}>
+    <h5>{text}</h5>
+  </button>
+)}
 
 <style>
 .button {
@@ -15,6 +20,8 @@ const { text, variant, link} = Astro.props
   border: none;
   border-radius: var(--radius-l);
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .red500 {
