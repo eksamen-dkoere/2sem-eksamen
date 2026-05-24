@@ -11,11 +11,15 @@ html.dark {
   color-scheme: dark;
 }
 body {
-  background-color: light-dark(var(--white), var(--black));
+  background-color: var(--white);
   overflow-x: hidden;
   transition:
     background-color 0.35s ease,
     color 0.35s ease;
+}
+
+html.dark body {
+  background-color: var(--black);
 }
 
 main {

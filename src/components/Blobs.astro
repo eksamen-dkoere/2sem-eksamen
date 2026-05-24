@@ -17,19 +17,31 @@ const {color, size} = Astro.props;
 
     /* color */
     .red {
-        background-color: light-dark(var(--red-300), var(--red-800));
+        background-color: var(--red-300);
+    }
+    html.dark .red {
+        background-color: var(--red-800);
     }
 
     .blue {
-        background-color: light-dark(var(--blue-300), var(--blue-800));
+        background-color: var(--blue-300);
+    }
+    html.dark .blue {
+        background-color: var(--blue-800);
     }
 
     .green {
-        background-color: light-dark(var(--green-300), var(--green-800));
+        background-color: var(--green-300);
+    }
+    html.dark .green {
+        background-color: var(--green-800);
     }
 
     .yellow {
-        background-color: light-dark(var(--yellow-300), var(--yellow-800));
+        background-color: var(--yellow-300);
+    }
+    html.dark .yellow {
+        background-color: var(--yellow-800);
     }
 
     /* size */
