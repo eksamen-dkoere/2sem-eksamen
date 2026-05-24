@@ -1,0 +1,44 @@
+---
+//@ts-nocheck
+const  { title, content, variant } = Astro.props;
+---
+
+<details class={`accordion ${variant}`}>
+    <summary>
+        <h3>{title}</h3>
+    </summary>
+    <div class="accordion-content">
+        <p>{content}</p>
+    </div>
+</details>
+
+<style>
+    .accordion { 
+        border-top: 1px solid var(--neutral-300);
+        padding: 1rem 0;
+
+    }
+
+summary { 
+    cursor: pointer;
+    list-style: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.accordion-content {
+    margin-top: 1rem;
+}
+
+    .lightmode { 
+        background-color: var(--neutral-300) ;
+        color: var(--white);
+    }
+
+    .darkmode { 
+        background-color: var(--neutral-800);
+        color: var(--black);
+    }
+</style>
