@@ -6,9 +6,9 @@
   --neutral-300: #c6c3b9;
   --neutral-400: #fafb9d;
   --neutral-500: #8c8773;
-  --neutral--600: #706c5c;
+  --neutral-600: #706c5c;
   --neutral-700: #545145;
-  --neutral--800: #38362e;
+  --neutral-800: #38362e;
   --black: #131313;
 
   /* RED */
@@ -73,7 +73,7 @@
   /* EFFECTS */
   --dropshadow: 5px 4px 4px rgba(19, 19, 19, 0.25);
   --dropshadow-small: 2px 1px 4px rgba(19, 19, 19, 0.25);
-  --innershadow-light: inset 5px 4px 4px rgba(19, 19, 19, 0.25);
-  --innershadow-dark: inset 5px 4px 4px rgba(253, 250, 240, 0.25);
-  --innershadow-dark-small: inset 2px 1px 4px rgba(253, 250, 240, 0.25);
+  --innershadow-light: inset 5px 4px 4px rgba(253, 250, 240, 0.25);
+  --innershadow-dark: inset 5px 4px 4px rgba(19, 19, 19, 0.25);
+  --innershadow-dark-small: inset 2px 1px 4px rgba(19, 19, 19, 0.25);
 }

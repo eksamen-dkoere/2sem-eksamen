@@ -1,0 +1,108 @@
+---
+//@ts-nocheck
+import '../layouts/Layout.astro'
+import Toggle from '../components/Toggle.astro'
+import Button from '../components/Buttons.astro'
+---
+
+<header class="header">
+    <nav class="nav">
+        <!-- insert logo -->
+        <a href="/" class="logo">Insert logo</a>
+
+        <!-- menu -->
+         <div class="menu">
+            <ul class="nav-links">
+                <li><a href="/yv">yv</a></li>
+                <li><a href="/op">op</a></li>
+                <li><a href="/so">so</a></li>
+                <li><a href="/lu">lu</a></li>
+                <li><a href="/fint_dit_kort">Find dit kort</a></li>
+                <li><a href="/sneak_peak">Sneak peak</a></li>
+                <li><a href="/om_os">Om os</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <Toggle />
+
+                <!-- change when sofia merges so its linked w astro -->
+                <a
+                    href="https://dankort.dk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="cta-button"
+                ><Button text="Bestil et Dankort" variant="red500"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+    .header {
+        width: 100%;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 86px;
+
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--gap-xl);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: var(--gap-xl);
+    }
+
+    .nav-links a {
+        position: relative;
+        color: var(--black);
+    }
+
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+
+        width: 100%;
+        height: 1px;
+
+        background: var(--black );
+
+        transform: scaleX(0);
+        transform-origin: center;
+
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-xl);
+    }
+
+    /* dark mode */
+    html.dark .nav-links a  {
+        color: var(--white);
+    }
+    html.dark .nav-links a::after {
+        background-color: var(--white);
+    }
+</style>

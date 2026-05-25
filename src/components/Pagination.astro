@@ -1,0 +1,54 @@
+---
+//@ts-nocheck
+const { current = 1 } = Astro.props;
+const pages = [1, 2, 3];
+---
+
+<nav class="pagination glass" aria-label="Carousel pagination">
+  {pages.map(page => (
+    <span
+      class={`dot glass ${page === current ? 'active' : ''}`}
+      aria-current={page === current ? 'page' : undefined}
+      aria-label={`Slide ${page}`}
+    ></span>
+  ))}
+</nav>
+
+<style>
+    .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background-color: rgba(221, 219, 213, 0.2);
+        padding: 5px 25px;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+    }
+
+    .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: rgba(221, 219, 213, 0.5);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+    }
+
+    .dot.active {
+        width: 7.5px;
+        height: 7.5px;
+        background-color: rgba(221, 219, 213, 0.5);
+        box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
+    }
+
+    /* darkmode */
+    html.dark .pagination {
+        background-color: rgba(56, 54, 46, 0.2);
+    }
+
+    html.dark .dot, html.dark .dot.active {
+        background-color: rgba(56, 54, 46, 0.5);
+    }
+
+</style>

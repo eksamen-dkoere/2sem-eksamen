@@ -1,0 +1,148 @@
+---
+//@ts-nocheck
+import '../layouts/Layout.astro';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+interface Props {
+  forceMobile?: boolean;
+}
+
+const { forceMobile = false } = Astro.props;
+const TARGET_DATE = "2026-06-12T08:00:00Z"; 
+---
+
+<div 
+  class:list={[
+    "countdown-container",
+    { "force-mobile": forceMobile }
+  ]}
+  data-target={TARGET_DATE}
+>
+  <div class="countdown-box glass">
+    <h3 class="countdown-number" id="days">0</h3>
+    <h3 class="countdown-label">Dage</h3>
+  </div>
+
+  <div class="countdown-box glass">
+    <h3 class="countdown-number" id="hours">0</h3>
+    <h3 class="countdown-label">Timer</h3>
+  </div>
+
+  <div class="countdown-box glass">
+    <h3 class="countdown-number" id="minutes">0</h3>
+    <h3 class="countdown-label">Minutter</h3>
+  </div>
+
+  <div class="countdown-box glass">
+    <h3 class="countdown-number" id="seconds">0</h3>
+    <h3 class="countdown-label">Sekunder</h3>
+  </div>
+</div>
+
+<script>
+  function setupCountdown() {
+    const containers = document.querySelectorAll('.countdown-container');
+    
+    containers.forEach(container => {
+      const targetDateStr = container.getAttribute('data-target');
+      if (!targetDateStr) return;
+
+      const targetTime = new Date(targetDateStr).getTime();
+
+      const daysEl = container.querySelector('#days') as HTMLElement;
+      const hoursEl = container.querySelector('#hours') as HTMLElement;
+      const minutesEl = container.querySelector('#minutes') as HTMLElement;
+      const secondsEl = container.querySelector('#seconds') as HTMLElement;
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetTime - now;
+
+        if (difference <= 0) {
+          if (daysEl) daysEl.innerText = '0';
+          if (hoursEl) hoursEl.innerText = '0';
+          if (minutesEl) minutesEl.innerText = '0';
+          if (secondsEl) secondsEl.innerText = '0';
+          clearInterval(intervalId);
+          return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        if (daysEl) daysEl.innerText = days.toString();
+        if (hoursEl) hoursEl.innerText = hours.toString();
+        if (minutesEl) minutesEl.innerText = minutes.toString();
+        if (secondsEl) secondsEl.innerText = seconds.toString();
+      }
+
+      updateCountdown();
+      const intervalId = setInterval(updateCountdown, 1000);
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupCountdown);
+  setupCountdown();
+</script>
+
+<style>
+  .countdown-container * {
+    box-sizing: border-box;
+  }
+
+  .countdown-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+
+  .countdown-box.glass {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    padding: 16px;
+  }
+
+  :global(html[data-theme="dark"]) .countdown-number,
+  :global(html.dark) .countdown-number,
+  :global(body[data-theme="dark"]) .countdown-number,
+  :global(body.dark) .countdown-number,
+  :global(html[data-theme="dark"]) .countdown-label,
+  :global(html.dark) .countdown-label,
+  :global(body[data-theme="dark"]) .countdown-label,
+  :global(body.dark) .countdown-label {
+    color: var(--white) !important; /* Tvinger teksten til din hvide variabel */
+  }
+
+
+  @media (min-width: 640px) {
+    .countdown-container:not(.force-mobile) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 800px;
+      gap: 20px;
+    }
+
+    .countdown-container:not(.force-mobile) .countdown-box.glass {
+      aspect-ratio: auto;
+      height: 110px;
+    }
+
+    .countdown-container:not(.force-mobile) .countdown-number {
+      font-size: 32px;
+    }
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+//@ts-nocheck
+import Layout from '../layouts/Layout.astro';
+import Blobs from '../components/Blobs.astro';
+import Pagination from '../components/Pagination.astro';
+import Partner from '../components/Partner1.astro'
+---
+
+<Layout>
+    <Blobs color="red" size="small"/>
+
+    <div style="margin-top: 3rem; display:flex; justify-content:center;">
+        <Pagination current="0" />
+    </div>
+
+    <Partner/>
+
+</Layout>

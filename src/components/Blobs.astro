@@ -1,0 +1,72 @@
+---
+//@ts-nocheck
+const {color, size} = Astro.props;
+---
+
+<div
+  class={`blob ${color} ${size}`}
+/>
+
+<style>
+    /* default style */
+    .blob {
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(100px);
+    }
+
+    /* color */
+    .red {
+        background-color: var(--red-300);
+    }
+    html.dark .red {
+        background-color: var(--red-800);
+    }
+
+    .blue {
+        background-color: var(--blue-300);
+    }
+    html.dark .blue {
+        background-color: var(--blue-800);
+    }
+
+    .green {
+        background-color: var(--green-300);
+    }
+    html.dark .green {
+        background-color: var(--green-800);
+    }
+
+    .yellow {
+        background-color: var(--yellow-300);
+    }
+    html.dark .yellow {
+        background-color: var(--yellow-800);
+    }
+
+    /* size */
+    .extra_small {
+        width: 200px;
+        height: 200px;
+    }
+
+    .small{
+        width: 300px;
+        height: 300px;
+    }
+
+    .medium {
+        width: 400px;
+        height: 400px;
+    }
+
+    .large {
+        width: 500px;
+        height: 500px;
+    }
+
+    .extra_large {
+        width: 600px;
+        height: 600px;
+    }
+</style>
