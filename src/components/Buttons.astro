@@ -30,38 +30,27 @@ const { text, variant, link} = Astro.props
     border: solid 0.5px var(--white);
     transition: transform 0.3s ease, background-color 0.3s ease;
   }
-  .secondary {
-    color: var(--black);
-    border: solid 0.5px var(--white);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  .white-hero {
-    color: var(--black);
-    border: solid 0.5px var(--white);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-
   .red500:hover, html.dark .red500:hover {
     background-color: rgba(153, 0, 10, 0.8);
     color: var(--white);
     border: solid 0.5px var(--white);
   }
 
+  .secondary {
+    color: var(--black);
+    border: solid 0.5px var(--white);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
   .secondary:hover {
     background-color: rgba(128, 225, 255, 0.5);
     color: var(--black);
     border: solid 0.5px var(--white);
-    
   }
-
-  /* darkmode */
-
   html.dark .secondary{
     background-color: rgba(56, 54, 46, 0.2);
     color: var(--white);
     border: solid 0.5px var(--white);
   }
-
   html.dark .secondary:hover{
     background-color: rgba(0, 160, 204, 0.5);
     color: var(--white);  
