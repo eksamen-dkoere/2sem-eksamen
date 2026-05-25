@@ -1,8 +1,24 @@
 ---
 //@ts-nocheck
 import Layout from '../layouts/Layout.astro';
+import Welcome from '../components/Welcome.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro'
+import Countdown from '../components/Countdown.astro';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
 ---
 
 <Layout>
 
+<Hero/>
+	<section >
+      
+  <Countdown />
+  <Countdown forceMobile={true} />
+</section>
+  
 </Layout>
