@@ -1,0 +1,29 @@
+---
+//@ts-nocheck
+const { label = "Partner logo" } = Astro.props;
+---
+
+<div class="partner-box" aria-label={label}>
+  <slot />
+</div>
+
+<style>
+.partner-box {
+    width: 136px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-s);
+    background: var(--white);
+    box-shadow: var(--dropshadow), var(--innershadow-light);
+    overflow: hidden;
+}
+
+.partner-box svg,
+.partner-box img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+</style>
+
