@@ -3,44 +3,90 @@
 import '../layouts/Layout.astro'
 import Toggle from '../components/Toggle.astro'
 import Button from '../components/Buttons.astro'
+import Logo from "../assets/Logo.svg"
 ---
 
-<header class="header">
-    <nav class="nav">
-        <!-- insert logo -->
-        <a href="/" class="logo">Insert logo</a>
+<header class="header glass">
+    <nav class="nav" aria-label="Hovednavigation">
 
-        <!-- menu -->
+        <!-- insert logo -->
+        <a href="/" class="logo">
+            <Logo/>
+        </a>
+
+        <!-- PC menu -->
          <div class="menu">
             <ul class="nav-links">
                 <li><a href="/yv">yv</a></li>
                 <li><a href="/op">op</a></li>
                 <li><a href="/so">so</a></li>
                 <li><a href="/lu">lu</a></li>
-                <li><a href="/fint_dit_kort">Find dit kort</a></li>
+                <li><a href="/find_dit_kort">Find dit kort</a></li>
                 <li><a href="/sneak_peak">Sneak peak</a></li>
                 <li><a href="/om_os">Om os</a></li>
             </ul>
 
             <div class="nav-actions">
                 <Toggle />
-
-                <!-- change when sofia merges so its linked w astro -->
-                <a
-                    href="https://dankort.dk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="cta-button"
-                ><Button text="Bestil et Dankort" variant="red500"/>
-                </a>
+                <Button text="Bestil et Dankort" variant="red500" link="https://dankort.dk"/>
             </div>
         </div>
+
+        <!-- Mobile controls -->
+        <div class="mobile-controls">
+            <Toggle />
+            <button class="burger-btn" aria-label="Åbn menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <nav class="mobile-menu" aria-label="Mobil navigation"> 
+        <ul class="nav-links">
+            <li><a href="/yv">yv</a></li>
+            <li><a href="/op">op</a></li>
+            <li><a href="/so">so</a></li>
+            <li><a href="/lu">lu</a></li>
+            <li><a href="/find_dit_kort">Find dit kort</a></li>
+            <li><a href="/sneak_peak">Sneak peak</a></li>
+            <li><a href="/om_os">Om os</a></li>
+        </ul>
+        <a class="mobile-cta" href="https://dankort.dk" target="_blank" rel="noopener noreferrer">
+            <Button text="Bestil et Dankort" variant="red500"/>
+        </a>
     </nav>
 </header>
+
+<script>
+const burgerBtn = document.querySelector(".burger-btn");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+burgerBtn?.addEventListener("click", () => {
+    const isOpen = mobileMenu?.classList.toggle("active");
+    burgerBtn?.setAttribute("aria-expanded", String(!!isOpen));
+    burgerBtn?.classList.toggle("active", !!isOpen);
+});
+
+const mobileLinks = document.querySelectorAll(".mobile-menu .nav-links a");
+mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        mobileMenu?.classList.remove("active");
+        burgerBtn?.setAttribute("aria-expanded", "false");
+        burgerBtn?.classList.remove("active");
+    });
+});
+</script>
 
 <style>
     .header {
         width: 100%;
+        position: fixed;
+        border-radius: 0;
+        overflow: visible;
+        z-index: 10;
     }
 
     .nav {
@@ -52,6 +98,11 @@ import Button from '../components/Buttons.astro'
         max-width: 1200px;
         margin: 0 auto;
         padding: 1rem 2rem;
+    }
+
+    .logo {
+        width: 50px;
+        object-fit: cover;
     }
 
     .menu {
@@ -98,11 +149,129 @@ import Button from '../components/Buttons.astro'
         gap: var(--gap-xl);
     }
 
+    .burger-btn,
+    .mobile-menu,
+    .mobile-controls {
+        display: none;
+    }
+
+    .burger-btn {
+        width: 40px;
+        height: 40px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        gap: 5px;
+    }
+
+    .burger-btn span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--black);
+        border-radius: 999px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        position: relative;
+    }
+
+    .burger-btn span + span {
+        margin-top: 0;
+    }
+
+    .burger-btn.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-btn.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+        position: fixed;
+        inset: 86px 0 0 0;
+        width: 100vw;
+        height: calc(100vh - 86px);
+        z-index: 999;
+        background: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        padding: 2rem;
+        transform: translateY(-10px);
+    }
+
+    .mobile-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .mobile-menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu .nav-links {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .mobile-menu .nav-links a {
+        font-size: 1.3rem;
+        padding: 0.5rem 0;
+    }
+
+    .mobile-cta {
+        margin-top: 2rem;
+    }
+
     /* dark mode */
     html.dark .nav-links a  {
         color: var(--white);
     }
-    html.dark .nav-links a::after {
+
+    html.dark .nav-links a::after, html.dark .burger-btn span {
         background-color: var(--white);
+    }
+
+    html.dark .mobile-menu {
+        background-color: var(--black);
+    }
+
+    @media (max-width: 768px) {
+        .menu {
+            display: none;
+        }
+
+        .mobile-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--gap-s);
+        }
+
+        .nav-actions {
+            display: none;
+        }
+
+        .burger-btn {
+            display: inline-flex;
+        }
+
+        .mobile-menu {
+            display: flex;
+        }
     }
 </style>
