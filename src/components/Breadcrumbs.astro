@@ -1,0 +1,90 @@
+---
+//@ts-nocheck
+
+const { pathname } = Astro.url;
+
+// 2. Split stien op i segmenter og fjern tomme elementer
+const segments = pathname.split('/').filter(Boolean);
+
+// 3. Byg data-objekter for hvert trin i stien
+const breadcrumbs = segments.map((segment, index) => {
+ 
+  const url = '/' + segments.slice(0, index + 1).join('/');
+  
+  // Gør teksten pæn (erstat bindestreger med mellemrum og giv stort forbogstav)
+  const label = segment
+    .replace(/-/g, ' ')
+    .replace(/^\w/, (c) => c.toUpperCase());
+
+  return { label, url };
+});
+
+const allBreadcrumbs = [{ label: 'Forside', url: '/' }, ...breadcrumbs];
+---
+
+<nav aria-label="Brødkrummesti" class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    {allBreadcrumbs.map((crumb, index) => {
+      const isLast = index === allBreadcrumbs.length - 1;
+      
+      return (
+        <li 
+          itemprop="itemListElement" 
+          itemscope 
+          itemtype="https://schema.org/ListItem"
+        >
+          {isLast ? (
+            // Sidste element (det aktuelle sidetrin) skal ikke være et link
+            <span itemprop="name" aria-current="page">{crumb.label}</span>
+          ) : (
+            // De mellemliggende trin er klikbare links
+            <a itemprop="item" href={crumb.url}>
+              <span itemprop="name">{crumb.label}</span>
+            </a>
+          )}
+          <meta itemprop="position" content={String(index + 1)} />
+          
+          {/* Vis en separator (f.eks. en skråstreg), hvis det ikke er sidste element */}
+          {!isLast && <span class="separator" aria-hidden="true">/</span>}
+        </li>
+      );
+    })}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 1rem 0;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumbs a {
+    color: var(--neutral-600);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs [aria-current="page"] {
+    color: var(--neutral-300);
+    font-weight: 600;
+  }
+
+  .breadcrumbs .separator {
+    color: var(--neutral-600);
+    user-select: none;
+  }
+</style>

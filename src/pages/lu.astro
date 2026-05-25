@@ -5,6 +5,8 @@ import Welcome from '../components/Welcome.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro'
 import Countdown from '../components/Countdown.astro';
+import Card from '../components/Card.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import '../styles/effects.css';
 import '../styles/global.css';
 import '../styles/reset.css';
@@ -15,10 +17,51 @@ import '../styles/variables.css';
 <Layout>
 
 <Hero/>
+<Breadcrumbs />
 	<section >
+      <div class="card-grid">
       
+     <Card 
+  title="Sommerhus" 
+  imageSrc="/images/sommerhus.jpg" 
+  imageAlt="Et flot sommerhus i solen" 
+  class="glass"
+/>
+
+<Card 
+  title="Ikon" 
+  isTransparent={true} 
+  class="glass"
+>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 8v8M8 12h8" />
+  </svg>
+</Card>
+
+    </div>
   <Countdown />
   <Countdown forceMobile={true} />
 </section>
   
 </Layout>
+
+
+<style>
+
+  /* Grid: Mobil first (1 kolonne) */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Desktop version (Skærme over 768px) */
+  @media (min-width: 768px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 kolonner på desktop, eller brug 'repeat(auto-fit, minmax(300px, 1fr))' */
+    }
+  }
+</style>

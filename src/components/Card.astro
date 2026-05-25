@@ -1,0 +1,132 @@
+---
+// 1. JAVASCRIPT / PROPS
+interface Props {
+  title: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  isTransparent?: boolean;
+  class?: string; // Modtager "glass" eller andre klasser udefra
+}
+
+const { 
+  title, 
+  imageSrc, 
+  imageAlt = "", 
+  isTransparent = false,
+  class: className = "" 
+} = Astro.props;
+---
+
+<div class={`custom-card ${isTransparent ? 'is-transparent' : ''} ${className}`}>
+  
+  <div class="card-header">
+    <span class="card-title">{title}</span>
+  </div>
+  
+  <div class="card-content">
+    {imageSrc ? (
+      <img src={imageSrc} alt={imageAlt} class="card-media" />
+    ) : (
+      <div class="slot-container">
+        <slot />
+      </div>
+    )}
+  </div>
+
+</div>
+
+<style>
+  /* Selve hovedcontaineren for kortet */
+  .custom-card {
+    --card-bg: #d9d9d9;
+    --border-width: 1px; /* Juster hvis dit 'glass' design bruger en anden border-tykkelse */
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 400px; /* Juster den samlede højde på kortet her */
+    position: relative;
+    box-sizing: border-box;
+
+    /* DET MAGISKE KLIP: Skærer det øverste venstre hjørne væk */
+    /* Point 1-4 laver det lave hak til venstre, point 5-8 laver den høje ryg til højre */
+    clip-path: polygon(
+      0% 45px, 
+      140px 45px, 
+      165px 0%, 
+      100% 0%, 
+      100% 100%, 
+      0% 100%
+    );
+    
+    /* Rundede hjørner på hele kortet via border-radius */
+    border-radius: 24px;
+    background: var(--card-bg);
+  }
+
+  /* Hvis du vil have kortet helt gennemsigtigt (uden baggrund/glass) */
+  .custom-card.is-transparent {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    clip-path: none; /* Fjern klippet hvis ikonet bare skal svæve frit uden folder-look */
+  }
+
+  /* Header-området */
+  .card-header {
+    /* Sørger for at headeren er høj nok til at rumme den høje ryg til højre */
+    height: 65px; 
+    display: flex;
+    align-items: flex-end; /* Placerer titlen i bunden af sit hak */
+    padding-left: 20px;
+    padding-bottom: 2px;
+    position: relative;
+  }
+
+  /* Titlen i det lave venstre hjørne */
+  .card-title {
+    color: #1a1a1a;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  /* Indholds-området under folder-toppen */
+  .card-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px; /* Giver den flotte luftindrykning til billedet */
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 65px);
+  }
+
+  /* Sørger for at billedet passer perfekt og bliver inde i kortet */
+  .card-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px; /* Flot afrunding på selve billedet */
+    display: block;
+  }
+
+  /* Containeren til dine SVG'er / plus-ikoner */
+  .slot-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Gør SVG-ikoner responsive og centreret */
+  .slot-container :global(svg) {
+    width: 100%;
+    height: auto;
+    max-width: 65%;
+    max-height: 65%;
+  }
+</style>
