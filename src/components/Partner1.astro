@@ -8,22 +8,42 @@ const { label = "Partner logo" } = Astro.props;
 </div>
 
 <style>
-.partner-box {
-    width: 136px;
-    height: 100px;
-    display: grid;
-    place-items: center;
-    border-radius: var(--radius-s);
-    background: var(--white);
-    box-shadow: var(--dropshadow), var(--innershadow-light);
-    overflow: hidden;
-}
+    .partner-box {
+        width: 210px;
+        height: 140px;
 
-.partner-box svg,
-.partner-box img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-}
+        display: grid;
+        place-items: center;
+
+        border-radius: var(--radius-s);
+        background: var(--white);
+
+        box-shadow: var(--dropshadow), var(--innershadow-light);
+        overflow: hidden;
+
+        padding: var(--gap-xs);
+    }
+
+    .partner-box svg,
+    .partner-box img {
+        max-width: 80%;
+        max-height: 80%;
+        width: auto;
+        height: auto;
+
+        object-fit: contain;
+    }
+
+    .partner-box svg {
+        transform: scale(0.9);
+    }
+
+
+    @media (max-width: 768px) {
+        .partner-box {
+            width: 136px;
+            height: 100px;
+        }
+    }
 </style>
 
