@@ -15,45 +15,56 @@ const { text, variant, link} = Astro.props
 )}
 
 <style>
-.button {
-  padding: var(--gap-xxs) var(--gap-s);
-  border: none;
-  border-radius: var(--radius-l);
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-}
+  .button {
+    padding: var(--gap-xxs) var(--gap-s);
+    border: none;
+    border-radius: var(--radius-l);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
 
-.red500 {
-  background-color: rgba(247, 0, 16, 0.8);
-  color: var(--white);
-}
-.neutral800{
-  background-color: rgba(56, 54, 46, 0.2);
-  color: var(--white);
-
-}
-.white-hero {
-  color: var(--white);
-  border: solid 1px var(--white);
-}
-.white {
-  color: var(--black);
-  border: solid 1px var(--white);
-}
-.red500:hover {
-    background: rgba(153, 0, 10, 0.8);
+  .red500, html.dark .red500 {
+    background-color: rgba(247, 0, 16, 0.8);
     color: var(--white);
-}
-
-.neutral800:hover {
-    background: rgba(0, 160, 204, 0.5);
-    color: var(--white);  
-}
-.white:hover {
-    background: rgba(128, 225, 255, 0.5);
+    border: solid 0.5px var(--white);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .secondary {
     color: var(--black);
+    border: solid 0.5px var(--white);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .white-hero {
+    color: var(--black);
+    border: solid 0.5px var(--white);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
 
-}
+  .red500:hover, html.dark .red500:hover {
+    background-color: rgba(153, 0, 10, 0.8);
+    color: var(--white);
+    border: solid 0.5px var(--white);
+  }
 
+  .secondary:hover {
+    background-color: rgba(128, 225, 255, 0.5);
+    color: var(--black);
+    border: solid 0.5px var(--white);
+    
+  }
+
+  /* darkmode */
+
+  html.dark .secondary{
+    background-color: rgba(56, 54, 46, 0.2);
+    color: var(--white);
+    border: solid 0.5px var(--white);
+  }
+
+  html.dark .secondary:hover{
+    background-color: rgba(0, 160, 204, 0.5);
+    color: var(--white);  
+    border: solid 0.5px var(--white);
+  }
 </style>
