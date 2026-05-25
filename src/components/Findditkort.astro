@@ -1,0 +1,57 @@
+---
+import '../layouts/Layout.astro'
+---
+<article >
+    <h2>Forskel på <b>Dankort</b> <br> - og andre kort</h2>
+<div id="Find-dit-kort-grid">
+<div class="Rødt-find-kort">
+<img src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
+<h3>Dankort</h3>
+<ul id="bullet">
+    <li>Dansk betalingsløsning</li>
+    <li>Lavere gebyrer for de danske butikker/webshops</li>
+    <li>Donerer mindst én øre pr. transaktion til Den Danske Naturfond</li>
+    <li>I tilfælde af krisesituation, kan Dankort stadig bruges</li>
+</ul>
+</div>
+<div class="Grønt-find-kort">
+<img src="/src/assets/mobil-gkort.svg" alt="Grønt betalingskort">
+<h3>Andre kort</h3>
+<ul id="bullet">
+    <li>International betalingsløsning </li>
+    <li>Sikker online betaling via. diverse sikkerheds aftaler (alt afhængigt af hvilken kortudsteder) </li>
+    <li>Der kan være forskellige fordele som: rejseforskringer, lounge-adgag, cashback eller andre kundefordele </li>
+    <li>Kan tilføjes i digitale wallets</li>
+</ul>
+</div>
+<div class="Blåt-find-kort">
+<img src="/src/assets/mobil-bkort.svg" alt="Blåt kombikort">
+<h3>Kombikort</h3>
+<ul id="bullet">
+    <li>Både dansk- og international betalingsløsning</li>
+    <li> Når du handler i Danmark/danske butikker eller webshops, bruges Dankortdelen. </li>
+    <li>Når du handler i andre lande eller internationale butikker/webshops bruges den internationale del. </li>
+    <li>Lavere gebyrer for de danske butikker/webshops </li>
+    <li>Kan tilføjes i digitale wallets</li>
+</ul>
+
+</div>
+</div>
+</article>
+
+<style>
+#bullet {
+  list-style: disc;
+}
+#Find-dit-kort-grid {
+  display: flex;
+  gap: 20rem;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  padding: 20px;
+
+  -webkit-overflow-scrolling: touch;
+}
+</style>
