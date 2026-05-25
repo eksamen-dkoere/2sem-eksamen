@@ -5,11 +5,11 @@ import '../layouts/Layout.astro'
 const { text, variant, link} = Astro.props
 ---
 {link ? (
-  <a href={link} class={`button ${variant}`}>
+  <a href={link} class={`button glass ${variant}`}>
     <h5>{text}</h5>
   </a>
 ) : (
-  <button class={`button ${variant}`}>
+  <button class={`button glass ${variant}`}>
     <h5>{text}</h5>
   </button>
 )}
@@ -33,9 +33,13 @@ const { text, variant, link} = Astro.props
   color: var(--white);
 
 }
+.white-hero {
+  color: var(--white);
+  border: solid 1px var(--white);
+}
 .white {
-  background-color: rgba(253, 250, 240, 0.2);
   color: var(--black);
+  border: solid 1px var(--white);
 }
 .red700 {
     background-color: rgba(153, 0, 10, 0.8);
