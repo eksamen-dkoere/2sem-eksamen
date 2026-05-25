@@ -13,7 +13,7 @@ import instagramSort from '../assets/instagram-sort-logo.svg';
 import instagramHvid from '../assets/instagram-logo.svg';
 import facebookSort from '../assets/facebook-sort-logo.svg';
 import facebookHvid from '../assets/facebook-logo.svg';
-// import dkLogo from '../assets/'
+import Logo from '../assets/logo.svg'
 ---
 
 <footer class="site-footer">
@@ -82,8 +82,10 @@ import facebookHvid from '../assets/facebook-logo.svg';
   </a>
 </div>
       
-      <div class="dk-logo">
-        <img src="/Logo.svg" alt="Dankort Logo" />
+      <div class="logo">
+        <a href="/">
+            <Logo/>
+        </a>
       </div>
 
     </div>
@@ -272,6 +274,11 @@ import facebookHvid from '../assets/facebook-logo.svg';
     object-fit: contain;
   }
 
+  .logo {
+        width: 6rem;
+        object-fit: cover;
+    }
+
   /* HTML-baseret Light/dark skift */
   .icon-dark { display: none; }
   .icon-light { display: block; }
@@ -281,10 +288,6 @@ import facebookHvid from '../assets/facebook-logo.svg';
     .icon-dark { display: block; }
   }
 
-  .dk-logo img {
-    height: 35px;
-    width: auto;
-  }
 
   /* ==========================================
      2. DESKTOP STYLES (Fra 768px og op)

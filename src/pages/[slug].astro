@@ -1,0 +1,26 @@
+---
+//@ts-nocheck
+import Layout from "../../layouts/Layout.astro";
+import Countdown from '../components/Countdown.astro';
+import Card from '../components/Card.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+
+export async function getStaticPaths() {
+  const endpoint =
+    "https://iqemsajivxgkyvnsblsh.supabase.co/rest/v1/beer?select=*";
+  const key = "sb_publishable_JJminKHUu5Xa_j_oVoNy_Q_djiIwRvF";
+
+  const response = await fetch(endpoint, { headers: { apikey: key } });
+  const products = await response.json();
+
+  return products.map((product) => ({
+    params: { slug: product.id.toString() },
+    props: { product },
+  }));
+}
+---
