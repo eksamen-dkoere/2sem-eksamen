@@ -1,8 +1,6 @@
 // DARK MODE
 const html = document.querySelector("html");
-const btn = document.querySelector(".darkmode-toggle");
-
-console.log(btn);
+const buttons = document.querySelectorAll(".darkmode-toggle");
 
 // Check localStorage on page load
 if (localStorage.getItem("darkMode") === "enabled") {
@@ -11,7 +9,6 @@ if (localStorage.getItem("darkMode") === "enabled") {
 
 // Toggle function
 function colorSchemeToggle() {
-  console.log("toggle dark mode");
   html.classList.toggle("dark");
 
   // Save preference
@@ -22,4 +19,6 @@ function colorSchemeToggle() {
   }
 }
 
-btn.addEventListener("click", colorSchemeToggle);
+buttons.forEach((btn) => {
+  btn.addEventListener("click", colorSchemeToggle);
+});
