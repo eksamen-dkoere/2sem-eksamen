@@ -1,8 +1,6 @@
 ---
 import '../layouts/Layout.astro'
-import '../components/Buttons.astro'
 import Buttons from '../components/Buttons.astro'
-const { headline, text } = Astro.props
 ---
 
 <article class="hero">
@@ -95,7 +93,7 @@ height: 400px;
 padding: 25px;
 
 }
-@media (min-width: 700px) {
+@media (min-width: 768px) {
 #hero-text-flex{
     display: flex;
    flex-direction: row;

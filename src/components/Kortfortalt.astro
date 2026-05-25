@@ -1,0 +1,86 @@
+---
+import '../layouts/Layout.astro'
+import Buttons from '../components/Buttons.astro'
+---
+<article id="kortFortalt">
+<div id="kortFortalt-text">
+    <img id="kortFortalt-dk" src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
+   <img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort">
+<h2>Dankort Øremærket</h2>
+<h3>Kort fortalt -</h3>
+<p>Dankort Øremærket er et initiativ, hvor vi donerer 1 øre til Den Danske Naturfond, for hver gang du betaler med dit Dankort. <br>
+Støt den danske natur - helt uden at det koster ekstra for dig.</p>
+<div id="buttons-hero">
+    <Buttons
+    text="Læs om Øremærket"
+    variant="red500">
+    <!-- <Buttons
+     text="Bestil Dankort"
+     variant="red500"> -->
+  </div>
+  </div>
+
+
+</article>
+
+<style>
+
+    #desk-dk{
+        display: none;
+    }
+
+    #kortFortalt{
+        gap: var(--gap-m);
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #kortFortalt-text{   
+     display: flex; 
+     flex-direction: column;  
+     gap: var(--gap-xs);
+    }
+    
+    #kortFortalt-dk{
+        position: absolute;
+        z-index: 1;
+        top: 4rem;
+        right: -4.5rem;
+      justify-self: end;
+      transform: rotate(43deg);
+    }
+
+
+/* DESKTOP VERSION */
+
+    @media (min-width: 768px) {
+    #kortFortalt{
+    padding-top: 10rem;
+    max-width: 1200px;
+   overflow: visible;
+   margin: 0 auto;
+    }
+
+#kortFortalt-dk{
+    display: none;
+}
+
+#kortFortalt-text{
+gap: var(--gap-m);
+width: 500px;
+}
+
+#desk-dk{
+    display: block;
+    position: absolute;
+    top: 14rem;
+    right: 3rem;
+    transform: rotate(-36deg);
+    width: 520px;
+height: 326.293px;
+}
+    }
+</style>
