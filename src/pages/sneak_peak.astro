@@ -3,8 +3,137 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+import Countdown from '../components/Countdown.astro';
+
+const endpoint = "https://tkndfhivujdlyksacqma.supabase.co/rest/v1/Dankort-oeremaerket?select=*";
+const key = "sb_publishable_MNgNlIAwa1Fk9Ub05gnGTw_IhTr0m_G";
+
+const res = await fetch(endpoint, { headers: { apikey: key } });
+const products = await res.json();
 ---
 
-<Layout>
-<Breadcrumbs />
+<Layout title="Merchandise">
+    <main>
+        <Breadcrumbs />
+        <section class="overordnet_grid">
+       <section class="sneak_peak_indhold">
+        <h2>Snart kan du bestille merchandise</h2>
+        <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
+
+<p>
+    Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond.
+<br>
+<br>
+Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere.
+<br>
+<br>
+Alle produkter er fremstillet af mindst 85% genanvendte materialer.
+</p>
+<Countdown />
+</section>
+
+    <section class="product_grid">
+        <a href="[slug].astro"><img src="/images/luftballon.webp" alt="luftballon"></a>
+          <a href="[slug].astro"><img src="/images/luftballon.webp" alt="luftballon"></a>
+            <a href="[slug].astro"><img src="/images/luftballon.webp" alt="luftballon"></a>
+        
+  <!-- {products.map(item => (
+    <article class="product-item" data-title={item.title}>
+      <Card data={item} /> 
+    </article>
+  ))} -->
+</section>
+</section>
+
+    </main>
+
+
 </Layout>
+
+
+<script>
+  const select = document.querySelector('#sort-select') as HTMLSelectElement;
+  const grid = document.querySelector('#product-grid') as HTMLElement;
+  const items = Array.from(grid.querySelectorAll('.product-item')) as HTMLElement[];
+
+  select.addEventListener('change', (e) => {
+    const target = e.target as HTMLSelectElement;
+    const value = target.value;
+    let sortedItems: HTMLElement[];
+
+    if (value === 'name-asc') {
+      // A til Å
+      sortedItems = [...items].sort((a, b) => 
+        (a.dataset.title || "").localeCompare(b.dataset.title || "")
+      );
+    } else if (value === 'name-desc') {
+      // Å til A (Vi bytter rundt på a og b)
+      sortedItems = [...items].sort((a, b) => 
+        (b.dataset.title || "").localeCompare(a.dataset.title || "")
+      );
+    } else if (value === 'price-asc') {
+      sortedItems = [...items].sort((a, b) => 
+        parseFloat(a.dataset.price || "0") - parseFloat(b.dataset.price || "0")
+      );
+    } else if (value === 'price-desc') {
+      sortedItems = [...items].sort((a, b) => 
+        parseFloat(b.dataset.price || "0") - parseFloat(a.dataset.price || "0")
+      );
+    } else {
+      sortedItems = items;
+    }
+
+    grid.innerHTML = '';
+    sortedItems.forEach(item => grid.appendChild(item));
+  });
+</script>
+
+<style>
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .overordnet_grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .sneak_peak_indhold {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+.product_grid {
+    display: grid ;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100% ;
+  }
+
+  .product_grid img {
+    width: 100% ;
+    max-width: 100% ;
+    height: auto ;
+    display: block ;
+  }
+
+  @media (min-width: 768px){
+
+ .product_grid {
+    display: grid ;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100% ;
+  }
+
+  }
+  
+</style>

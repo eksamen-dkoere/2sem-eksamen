@@ -97,13 +97,16 @@ const TARGET_DATE = "2026-06-12T08:00:00Z";
 
   .countdown-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
     width: 100%;
-    max-width: 20rem;
+    max-width: 40rem;
     margin: 0 auto;
   }
 
+  .countdown-container h3 {
+    font-size: 14px;
+  }
 
   .countdown-box.glass {
     position: relative;
@@ -113,8 +116,8 @@ const TARGET_DATE = "2026-06-12T08:00:00Z";
     justify-content: center;
     border-radius: var(--radius-l);
     overflow: hidden;
-    aspect-ratio: 1 / 1;
-    padding: 16px;
+    aspect-ratio: 1/0.5;
+
   }
 
   :global(html[data-theme="dark"]) .countdown-number,
@@ -129,19 +132,19 @@ const TARGET_DATE = "2026-06-12T08:00:00Z";
   }
 
 
-  @media (min-width: 640px) {
-    .countdown-container:not(.force-mobile) {
+  @media (min-width: 768px) {
+    .countdown-container {
       grid-template-columns: repeat(4, 1fr);
-      max-width: 800px;
+      max-width: 1000px;
       gap: 20px;
     }
 
-    .countdown-container:not(.force-mobile) .countdown-box.glass {
+    .countdown-container .countdown-box.glass {
       aspect-ratio: auto;
       height: 110px;
     }
 
-    .countdown-container:not(.force-mobile) .countdown-number {
+    .countdown-container .countdown-number {
       font-size: 32px;
     }
   }
