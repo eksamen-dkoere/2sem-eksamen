@@ -1,0 +1,104 @@
+---
+//@ts-nocheck
+import Partner from '../components/Partner1.astro'
+import Emmerys from '../assets/partners/emmerys.svg'
+import FaellesKassen from '../assets/partners/faelles_kassen.svg'
+import Flowering from '../assets/partners/flowering.svg'
+import FasterOikos from '../assets/partners/faster_oikos.svg'
+import Genbyg from '../assets/partners/genbyg.svg'
+import Kirppu from '../assets/partners/kirppu.svg'
+import LollandsBank from '../assets/partners/lollands_bank.svg'
+import Loeberen from '../assets/partners/loeberen.svg'
+import Merkur from '../assets/partners/merkur.svg'
+import RedMaden from '../assets/partners/red_maden.svg'
+import Rise from '../assets/partners/rise.svg'
+import Sport24 from '../assets/partners/sport24.svg'
+import Sportigan from '../assets/partners/sportigan.svg'
+---
+
+<div class="grid glass">
+    <Partner>
+        <Emmerys/>
+    </Partner>
+
+    <Partner>
+        <FaellesKassen/>
+    </Partner>
+
+    <Partner>
+        <Flowering/>
+    </Partner>
+
+    <Partner>
+        <FasterOikos/>
+    </Partner>
+
+    <Partner>
+        <Genbyg/>
+    </Partner>
+
+    <Partner>
+        <Kirppu/>
+    </Partner>
+
+    <Partner>
+        <LollandsBank/>
+    </Partner>
+
+    <Partner>
+        <Loeberen/>
+    </Partner>
+
+    <Partner>
+        <Merkur/>
+    </Partner>
+
+    <Partner>
+        <RedMaden/>
+    </Partner>
+
+    <Partner>
+        <Rise/>
+    </Partner>
+
+    <Partner>
+        <Sport24/>
+    </Partner>
+
+    <Partner>
+        <Sportigan/>
+    </Partner>
+
+    <p class="text">Flere <span class="fat">samarbejdspartnere</span> på vej</p>
+</div>
+
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 210px);
+        gap: var(--gap-s);
+
+        justify-content: center;
+
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--gap-s) var(--gap-xs);
+        box-shadow: var(--dropshadow), var(--innershadow-dark);
+    }
+
+    .text {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .fat {
+        font-weight: 700;
+    }
+
+
+    @media (max-width: 768px) {
+        .grid {
+            grid-template-columns: repeat(auto-fit, 136px);
+        }
+    }
+</style>
