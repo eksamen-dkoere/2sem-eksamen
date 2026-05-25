@@ -139,14 +139,19 @@ import facebookHvid from '../assets/facebook-logo.svg';
 .site-footer {
     color-scheme: light dark;
     width: 100%;
-    background-color: light-dark(var(--neutral-200), var(--neutral-800));
-    color: light-dark(var(--black), var(--white));
+    background-color: var(--neutral-200);
+    color: var(--black);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
     display: block;
+  }
+
+  html.dark .site-footer {
+    background: var(--neutral-800);
+    color: var(--white);
   }
 
 .magnetic-strip {
@@ -167,8 +172,8 @@ import facebookHvid from '../assets/facebook-logo.svg';
   }
   
   .brand-logo-text {
-    background: var(--white, #FFFDF9);
-    color: var(--black, #000000);
+    background: var(--white);
+    color: var(--black);
     display: inline-block;
     padding: 0.5rem 5rem;
     font-size: 1.2rem;
@@ -283,7 +288,7 @@ import facebookHvid from '../assets/facebook-logo.svg';
   /* ==========================================
      2. DESKTOP STYLES (Fra 768px og op)
      ========================================== */
-  @media (min-width: 769px) {
+  @media (min-width: 700px) {
     .footer-content {
       padding: 0 4rem 3rem 4rem;
     }

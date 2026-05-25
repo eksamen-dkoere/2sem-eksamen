@@ -104,75 +104,19 @@ const TARGET_DATE = "2026-06-12T08:00:00Z";
     margin: 0 auto;
   }
 
-  /* ==========================================
-     KASSERNE (LIGHT MODE STANDARD MED EKSTRA GLANS)
-     ========================================== */
+
   .countdown-box.glass {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    /* Justeret base-farve for bedre glanseffekt over gradients */
-    background: rgba(245, 243, 235, 0.25);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    
-    /* Fin, lys ydre kant */
-    border: 0.1px solid rgba(253, 250, 240, 0.6);
-    
-    /* Tredobbelt skygge: Ydre skygge + Kraftig hvid glans i toppen + Indre dybde */
-    box-shadow:
-      5px 4px 4px rgba(19, 19, 19, 0.25),
-      inset 0px 3px 6px rgba(255, 255, 255, 0.7),
-      inset 5px 4px 4px rgba(253, 250, 240, 0.15);
-    
     border-radius: var(--radius-l);
     overflow: hidden;
-
     aspect-ratio: 1 / 1;
     padding: 16px;
   }
 
-  /* FORSTÆRKET LYSINDFALD (Højere opacitet på gradient for maksimal glans) */
-  .countdown-box.glass::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      -45deg,
-      rgba(255, 255, 255, 0.65) 0%,
-      rgba(253, 250, 240, 0.15) 40%,
-      transparent 75%
-    );
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* Tekststyling inde i glasset (Light mode basisfarver) */
-  .countdown-number {
-    position: relative;
-    z-index: 3; /* Lægges over det stærke lysindfald */
-    margin: 0;
-    font-weight: 700;
-    color: var(--black);
-    line-height: 1;
-  }
-
-  .countdown-label {
-    position: relative;
-    z-index: 3;
-    margin: 0;
-    font-weight: 500;
-    color: var(--black);
-    margin-top: 6px;
-  }
-
-  /* ==========================================
-     SLETTEFRIT DARK MODE (Tekst & Glass Justeringer)
-     Dækker alle tænkelige tema-systemer i Astro
-     ========================================== */
   :global(html[data-theme="dark"]) .countdown-number,
   :global(html.dark) .countdown-number,
   :global(body[data-theme="dark"]) .countdown-number,
@@ -184,21 +128,7 @@ const TARGET_DATE = "2026-06-12T08:00:00Z";
     color: var(--white) !important; /* Tvinger teksten til din hvide variabel */
   }
 
-  /* Tilpasning af selve glasset i dark mode for at matche prototypen */
-  :global(html[data-theme="dark"]) .countdown-box.glass,
-  :global(html.dark) .countdown-box.glass,
-  :global(body[data-theme="dark"]) .countdown-box.glass,
-  :global(body.dark) .countdown-box.glass {
-    background: rgba(255, 255, 255, 0.08);
-    border: 0.1px solid rgba(255, 255, 255, 0.25);
-    box-shadow:
-      5px 4px 15px rgba(0, 0, 0, 0.5),
-      inset 0px 2px 4px rgba(255, 255, 255, 0.3);
-  }
 
-  /* ==========================================
-     DESKTOP LAYOUT
-     ========================================== */
   @media (min-width: 640px) {
     .countdown-container:not(.force-mobile) {
       grid-template-columns: repeat(4, 1fr);
