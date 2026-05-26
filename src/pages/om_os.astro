@@ -3,8 +3,145 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Samarbejdspartner from '../components/Samarbejdspartner.astro';
+import Accordion from '../components/Accordion.astro';
+
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
 ---
 
 <Layout>
-<Breadcrumbs />
+    <main>  
+        <Breadcrumbs />
+        <section class="overall_grid"> 
+            
+            {/* TOP SECTION */}
+            <section class="top_section">
+                <div class="top_text">
+                    <h2>Det der betyder noget for os</h2>
+                    <p>Hos Dankort Øremærket tror vi på, at små handlinger kan gøre en stor forskel. Derfor har vi gjort det nemt at støtte gode formål gennem noget, vi allerede gør hver dag, at betale med Dankort. 
+                    <br><br>
+                    For os handler det om at betale smart, betale hurtigt og betale sikkert. En simpel løsning, hvor de små donationer, sker helt automatisk gennem de almindelige betalinger. Det er enkelt, og kræver ingen ekstra tid eller omkostninger for forbrugeren. Vi ønsker at skabe en troværdig og autentisk måde at støtte på. Her er hjælpen nemlig helt naturligt en del af din hverdag. 
+                    <br><br>
+                    Sammen med vores samarbejdspartnere er Dankort Øremærket med til at samle små bidrag, som vokser til reel forandring.
+                    Det skal føles organisk at gøre noget godt fordi ansvarlige valg ikke behøver være besværlige.</p>
+                </div>
+                
+                {/* Repsmark billede (Rykket ud af sin egen div for nemmere styring) */}
+                <img src="public/images/repsmark.webp" alt="Repsmark" class="img_repsmark">
+
+                <div class="top_accordions">
+                    <Accordion title="Betal smart" content="..." variant="lightmode" />
+                    <Accordion title="Betal smart" content="..." variant="darkmode" />
+                    <Accordion title="Betal hurtigt" content="..." variant="lightmode" />
+                    <Accordion title="Betal hurtigt" content="..." variant="darkmode" />
+                    <Accordion title="Betal sikkert" content="..." variant="lightmode" />
+                    <Accordion title="Betal sikkert" content="..." variant="darkmode" />
+                </div>
+            </section>
+
+            {/* MIDDLE SECTION */}
+            <section class="middle_section">
+                <div class="middle_text">
+                    <h2>Dankort Øremærket</h2>
+                    <h3>Vi donerer til Den Danske Naturfond</h3>
+                    <p>Dankort Øremærket er et initiativ fra Dankort, der har til formål at støtte og styrke den danske natur, gennem donationer til Den Danske Naturfond. 
+                    Dankort garanterer mindst 10. mio kr. i årlige donationer til Den Danske Naturfond. Uanset om du betaler med fysisk eller virtuelt kort - donerer Dankort minimum 1 øre til fonden.
+                    Det vil altså sige at når du betaler med Dankort er du med til at donerer op til 3 øre pr. transaktion</p>
+                </div>
+                
+                {/* Luftballon billede (Placeret efter teksten i HTML, så det naturligt ligger nederst på mobil) */}
+                <img src="public/images/luftballon.webp" alt="luftballon" class="img_luftballon">
+            </section>
+
+            {/* SAMARBEJDSPARTNER */}
+            <section class="samarbejdspartner">
+                <div class="text">
+                    <h2>Vores samarbejdspartnere</h2>
+                    <p>Dankort Øremærket og deres samarbejdspartnere gør det muligt for dig at støtte nemt og enkelt til Den Danske Naturfond...</p>
+                </div>
+                <Samarbejdspartner/>
+            </section>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    img {
+        border-radius: var(--radius-l);
+        width: 100%; /* Sikrer de ikke sprænger rammerne på mobil */
+        height: auto;
+    }
+
+    .overall_grid {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 1rem;
+    }
+
+    /* ========================================================
+       MOBIL STYLING (Standard)
+       ======================================================== */
+    
+    /* Top section bliver lavet til et grid på mobil, så vi kan styre rækkefølgen */
+    .top_section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Her bestemmer vi rækkefølgen (order) på mobil */
+    .top_text { order: 1; }
+    .img_repsmark { order: 2; }       /* Lægger sig nu mellem tekst og accordions */
+    .top_accordions { order: 3; }
+
+    /* For middle_section ligger luftballon-billedet allerede efter teksten i HTML'en, 
+       så på mobil vil det automatisk ligge under h2, h3 og p helt uden ekstra CSS. */
+    .middle_section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+
+    /* ========================================================
+       DESKTOP STYLING (Fra 768px og op)
+       ======================================================== */
+    @media (min-width: 768px) {
+        
+        /* Vi nulstiller rækkefølgen på top_section og laver det 2-spaltet */
+        .top_section {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+                "text image"
+                "accordions image";
+        }
+        
+        /* Vi placerer elementerne i det rigtige desktop-grid */
+        .top_text { grid-area: text; }
+        .top_accordions { grid-area: accordions; }
+        .img_repsmark { grid-area: image; }
+
+        /* For middle_section vil vi gerne have billedet til VENSTRE på desktop */
+        .middle_section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        /* row-start / col-start rykker billedet over i første kolonne på desktop, 
+           selvom det står sidst i HTML-koden */
+        .img_luftballon {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .middle_text {
+            grid-column: 2;
+            grid-row: 1;
+        }
+    }
+</style>

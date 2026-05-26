@@ -5,22 +5,17 @@ import Welcome from '../components/Welcome.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro'
 import Countdown from '../components/Countdown.astro';
-import Card from '../components/Card.astro';
+
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 
+import Card from '../components/Card.astro';
 import '../styles/effects.css';
 import '../styles/global.css';
 import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
 
-// Gem din rå SVG-kode i en variabel, så koden forbliver ren at se på
-const plusIkonSvg = `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 8v8M8 12h8" />
-  </svg>
-`;
+
 ---
 
 <Layout>
@@ -31,17 +26,21 @@ const plusIkonSvg = `
   <div class="card-grid">
 <Card 
   badgeText="Vi donerer til Den Danske Naturfond" 
+  overlayText="Denne tekst er indsat af mig"
   mediaUrl="/images/kalkgrav.webp" 
-  altText="Flot naturlandskab"
-/>
-<Card
-  badgeText="Step 1"
-  inlineSvg={plusIkonSvg}
-  altText="Plus ikon"
+    altText="Flot naturlandskab"
 />
 
+
+<Card 
+  badgeText="Test"
+  mediaUrl="/src/assets/tree.svg"
+  altText="Mit ikon"
+/>
 
     </div>
+  <Countdown />
+  <Countdown forceMobile={true} />
 </section>
   
 </Layout>
