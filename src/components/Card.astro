@@ -1,102 +1,125 @@
-
-
 ---
-// src/components/Card.astro
+//@ts-nocheck
+
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+import '../../public/images/luftballon.webp';
+
 interface Props {
   badgeText: string;
-  mediaUrl: string;
+  mediaUrl?: string;
   altText?: string;
+  inlineSvg?: string;
 }
 
-const { badgeText, mediaUrl, altText = "Kort indhold" } = Astro.props;
-
-// Find ud af hvilken type fil der er tale om ud fra filendelsen
-const isVideo = /\.(mp4|webm|webp|svg|ogg)$/i.test(mediaUrl);
-const isPDF = /\.(pdf)$/i.test(mediaUrl);
+const { badgeText, mediaUrl, altText = "Kort", inlineSvg } = Astro.props;
 ---
 
-<div class="glass">
-  <div class="glass-badge">{badgeText}</div>
-  <div class="glass-content">
-    {isVideo && (
-      <video src={mediaUrl} autoplay loop muted playsinline></video>
-    )}
-    
-    {isPDF && (
-      <iframe src={mediaUrl} title={altText}></iframe>
-    )}
-    
-    {!isVideo && !isPDF && (
+<div class="card glass">
+  <div class="card-badge">{badgeText}</div>
+
+  <div class="card-content">
+    {inlineSvg ? (
+      <div class="svg-wrapper" set:html={inlineSvg} title={altText} />
+    ) : (
       <img src={mediaUrl} alt={altText} loading="lazy" />
     )}
   </div>
 </div>
 
 <style>
-  .glass {
-    position: relative; 
-    width: 100%;        
-    height: 100%;      
-    border-radius: 0px 16px 16px 16px; 
-    overflow: visible; 
-  }
+/* Variabler – light mode */
+:global(:root) {
+  --badge-bg: var(--white);
+  --badge-text: var(--black);
+}
 
-  .glass-badge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10; 
-    
-    background-color: #ffffff; 
-    color: #000000; 
-    padding: 16px 24px;
-    font-weight: bold;
-    font-family: sans-serif;
-    font-size: 20px;
-    
-    border-top-left-radius: 0px; 
-    border-bottom-right-radius: 16px; 
-  }
+/* Variabler – dark mode */
+:global(html.dark),
+:global(body.dark) {
+  --badge-bg: var(--black);
+  --badge-text: var(--white);
+}
 
-  .glass-badge::after {
-    content: "";
-    position: absolute;
-    right: -16px; 
-    top: 0;
-    width: 16px;   
-    height: 16px;  
-    background: transparent;
-    border-top-left-radius: 16px;
-    box-shadow: -4px -4px 0 4px #ffffff; 
-    pointer-events: none;
-  }
+/* Selve kortet */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 0 16px 16px 16px;
+  overflow: hidden;
+  background: transparent;
+}
 
-  .glass-badge::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -16px; 
-    width: 16px;   
-    height: 16px;  
-    background: transparent;
-    border-top-left-radius: 16px;
-    box-shadow: -4px -4px 0 4px #ffffff; 
-    pointer-events: none;
-  }
+/* Badge */
+.card-badge {
+  position: absolute; /* vigtigt! */
+  top: 0;
+  left: 0;
+  z-index: 10; /* ligger over billedet */
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  padding: 16px 24px;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 20px;
+  border-bottom-right-radius: 16px;
+}
 
-  .glass-content {
-    width: 100%;
-    height: 100%;
-  }
+/* Badge buer */
+.card-badge::after,
+.card-badge::before {
+  content: "";
+  position: absolute;
+  z-index: -1; /* ligger under badge, men over billedet */
+  background: transparent;
+  border-top-left-radius: 16px;
+  box-shadow: -4px -4px 0 4px var(--badge-bg);
+}
 
-  .glass-content img,
-  .glass-content video,
-  .glass-content iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
-    border: none;
-    border-radius: 0px 16px 16px 16px; 
-  }
+.card-badge::after {
+  right: -16px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.card-badge::before {
+  left: 0;
+  bottom: -16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Indhold */
+.card-content {
+  position: absolute;
+  inset: 0;
+  z-index: 5; /* ligger under badge */
+}
+
+/* Billeder */
+.card-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Inline SVG wrapper */
+.svg-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.svg-wrapper :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 </style>
