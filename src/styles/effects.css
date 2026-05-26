@@ -2,12 +2,12 @@
 .glass {
   position: relative;
 
-  background-color: rgba(221, 219, 213, 0.2);
+  background-color: rgba(var(--neutral-200-rgb), 0.2);
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
-  border: 0.1px solid rgba(253, 250, 240, 0.5);
+  border: 0.1px solid rgba(var(--white-rgb), 0.5);
 
   box-shadow: var(--dropshadow), var(--innershadow-dark);
 
@@ -24,8 +24,8 @@
 
   background: linear-gradient(
     -45deg,
-    rgba(253, 250, 240, 0.35),
-    rgba(253, 250, 240, 0.05) 40%,
+    rgba(var(--white-rgb), 0.35),
+    rgba(var(--white-rgb), 0.05) 40%,
     transparent 70%
   );
 
@@ -34,5 +34,5 @@
 
 /* darkmode */
 html.dark .glass {
-  background-color: rgba(56, 54, 46, 0.2);
+  background-color: rgba(var(--neutral-800-rgb), 0.2);
 }
