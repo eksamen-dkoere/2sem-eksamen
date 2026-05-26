@@ -3,56 +3,58 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Countdown from '../components/Countdown.astro';
 import '../styles/effects.css';
 import '../styles/global.css';
 import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
-import Countdown from '../components/Countdown.astro';
+
 
 const endpoint = "https://tkndfhivujdlyksacqma.supabase.co/rest/v1/Dankort-oeremaerket?select=*";
 const key = "sb_publishable_MNgNlIAwa1Fk9Ub05gnGTw_IhTr0m_G";
 
 const res = await fetch(endpoint, { headers: { apikey: key } });
-const products = await res.json();
+const allProducts = await res.json();
+
+
+const uniqueProducts = allProducts.filter(product => 
+  product.id === 1 || product.id === 6 || product.id === 9
+);
+
+const { badgeText, mediaUrl, altText, href } = Astro.props;
 ---
 
 <Layout title="Merchandise">
     <main>
         <Breadcrumbs />
         <section class="overordnet_grid">
-       <section class="sneak_peak_indhold">
-        <h2>Snart kan du bestille merchandise</h2>
-        <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
+            <section class="sneak_peak_indhold">
+                <h2>Snart kan du bestille merchandise</h2>
+                <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
 
-<p>
-    Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond.
-<br>
-<br>
-Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere.
-<br>
-<br>
-Alle produkter er fremstillet af mindst 85% genanvendte materialer.
-</p>
-<Countdown />
-</section>
+                <p>
+                    Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond.
+                    <br><br>
+                    Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere.
+                    <br><br>
+                    Alle produkter er fremstillet af mindst 85% genanvendte materialer.
+                </p>
+                <Countdown />
+            </section>
 
-    <section class="product_grid">
-        <a href="[slug].astro"><img src="/images/luftballon.webp" alt="luftballon"></a>
-          <a href="[slug].astro"><img src="/images/luftballon.webp" alt="luftballon"></a>
-            <a href="[slug].astro"><img src="/images/luftballon.webp" alt="luftballon"></a>
-        
-  <!-- {products.map(item => (
-    <article class="product-item" data-title={item.title}>
-      <Card data={item} /> 
-    </article>
-  ))} -->
-</section>
-</section>
-
+            <section class="product_grid">
+                         {uniqueProducts.map((product) => (
+  <a class="product-item" href={`/${product.id}`}><Card 
+    badgeText={product.title} 
+    mediaUrl={product.image} 
+    altText={product.title}
+  /></a>
+  
+))}
+            </section>
+        </section>
     </main>
-
-
 </Layout>
 
 
@@ -112,11 +114,35 @@ Alle produkter er fremstillet af mindst 85% genanvendte materialer.
     }
 
 .product_grid {
-    display: grid ;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 100% ;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product_grid > .product-item {
+  flex: 0 0 80%; /* mobil: 80% af skærmen */
+  max-width: 350px; /* desktop: pæn bredde */
+  scroll-snap-align: start;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .product_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    overflow: visible; /* ingen scroll på desktop */
   }
+
+  .product_grid > .product-item {
+    flex: none;
+    max-width: none;
+  }
+}
+
 
   .product_grid img {
     width: 100% ;
@@ -125,15 +151,6 @@ Alle produkter er fremstillet af mindst 85% genanvendte materialer.
     display: block ;
   }
 
-  @media (min-width: 768px){
-
- .product_grid {
-    display: grid ;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    width: 100% ;
-  }
-
-  }
+  
   
 </style>

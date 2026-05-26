@@ -1,9 +1,13 @@
 ---
 //@ts-nocheck
-import Layout from "../../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
+import Welcome from '../components/Welcome.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
 import Countdown from '../components/Countdown.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+
 import '../styles/effects.css';
 import '../styles/global.css';
 import '../styles/reset.css';
@@ -12,15 +16,155 @@ import '../styles/variables.css';
 
 export async function getStaticPaths() {
   const endpoint =
-    "https://iqemsajivxgkyvnsblsh.supabase.co/rest/v1/beer?select=*";
-  const key = "sb_publishable_JJminKHUu5Xa_j_oVoNy_Q_djiIwRvF";
+    "https://tkndfhivujdlyksacqma.supabase.co/rest/v1/Dankort-oeremaerket?select=*";
+  const key = "sb_publishable_MNgNlIAwa1Fk9Ub05gnGTw_IhTr0m_G";
 
   const response = await fetch(endpoint, { headers: { apikey: key } });
   const products = await response.json();
 
   return products.map((product) => ({
-    params: { slug: product.id.toString() },
+    params: { slug: product.id.toString() }, // Sørg for at din fil hedder [slug].astro eller [id].astro
     props: { product },
   }));
 }
+
+// FIX: Her trækker vi dataen ud, så din HTML kan læse 'product'
+const { product } = Astro.props;
 ---
+
+<Layout title={product.title}>
+  <main>
+    <Breadcrumbs />
+    <section class="product_grid">
+
+        <div class="hide-on-desktop">
+        <Countdown/>
+        </div>
+        <div class="img">
+          <img src={product.image} alt={product.title} />
+          </div>
+      
+      <div class="tekst_grid">
+        <div>
+      <div class="hide-on-mobile">
+        <Countdown forceMobile={true} />
+        </div>
+        <h1>{product.title}</h1>
+         <h2>{product.price},-</h2>
+        </div>
+        
+        <div class="tekst_grid"> 
+        <div class="size-selector">
+  <h3>Størrelse</h3>
+  
+  {product.size && product.size.length === 1 ? (
+    /* Hvis der kun er 1 størrelse (f.eks. One size), viser vi det bare som ren tekst */
+    <p class="one-size-text">{product.size[0]}</p>
+  ) : (
+    /* Hvis der er flere størrelser (T-shirt, Sokker), viser vi dropdownen */
+    <select name="size" id="size-select" class="custom-select">
+      <option value="" disabled selected>Vælg størrelse</option>
+      {product.size && product.size.map((s) => (
+        <option value={s.toLowerCase()}>{s}</option>
+      ))}
+    </select>
+  )}
+</div>
+
+            <div class="oplysninger">
+                <div>
+                <h4>Produktoplysninger</h4>
+                 </div>
+                 <div>
+                 <h5>Materiale</h5>
+                 <p>100% genanvendelige materialer</p>
+                 </div>
+                <div>
+                 <h5>Produkt type</h5>
+                 <p>{product.type}</p>
+                  </div>
+                 <div>
+                 <h5>Beskrivelse</h5>
+                 <p>{product.description}</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 
+
+<style>
+  .product_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 760px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .product_grid img {
+   border-radius: var(--radius-l);
+  }
+ 
+    .hide-on-mobile {
+    display: none;
+  }
+
+  .tekst_grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .oplysninger {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .size-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.custom-select {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid  var(--neutral-500);
+  border-radius: var(--radius-m);
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+/* Hvis dropdownen skal være mørk i darkmode */
+html.dark .custom-select {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--neutral-500);
+}
+
+  /* Desktop version (Skærme over 768px) */
+  @media (min-width: 768px) {
+    .product_grid {
+      grid-template-columns: 1fr 1fr;
+      max-width: 1200px;
+      padding: 5rem;
+    }
+
+  .hide-on-mobile {
+      display: block; /* eller 'contents' / 'flex' alt efter behov */
+    }
+
+    /* På desktop skal mobil-countdownen skjules */
+    .hide-on-desktop {
+      display: none;
+    }
+  }
+</style>
