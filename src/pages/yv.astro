@@ -5,9 +5,11 @@ import Blobs from '../components/Blobs.astro';
 import Pagination from '../components/Pagination.astro';
 import Partner from '../components/Partner1.astro'
 import PartnerGrid from '../components/Samarbejdspartner.astro'
+import PartnerSection from '../components/PartnerSection.astro'
 ---
 
 <Layout>
+    <main>
     <Blobs color="red" size="small"/>
 
     <div style="margin-top: 3rem; display:flex; justify-content:center;">
@@ -18,5 +20,37 @@ import PartnerGrid from '../components/Samarbejdspartner.astro'
 
     <PartnerGrid/>
 
+    <PartnerSection/>
+    </main>
+
+    <div class="bg">
+        <div class="green-blob">
+            <Blobs color="green" size="large"/>
+        </div>
+        <div class="red-blob">
+            <Blobs color="red" size="large"/>
+        </div>
+    </div>
 
 </Layout>
+
+<style>
+    .bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .green-blob {
+        position: absolute;
+        top: 1300px;
+        left: -250px;
+    }
+
+    .red-blob {
+        position: absolute;
+        top: 1300px;
+        right: -250px;
+    }
+</style>

@@ -95,7 +95,8 @@ mobileLinks.forEach(link => {
         align-items: center;
         height: 86px;
 
-        max-width: 1200px;
+        width: min(1200px, calc(100% - 2rem));
+        margin-inline: auto;
         margin: 0 auto;
     }
 
