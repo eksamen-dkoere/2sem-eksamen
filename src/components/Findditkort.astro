@@ -2,9 +2,9 @@
 import '../layouts/Layout.astro'
 ---
 <article >
-    <h2>Forskel på <b>Dankort</b> <br> - og andre kort</h2>
+    <h2 id="findditkorth2">Forskel på <b>Dankort</b> og andre kort</h2>
 <div id="Find-dit-kort-grid">
-<div class="Rødt-find-kort">
+<div class="kort">
 <img src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
 <h3>Dankort</h3>
 <ul id="bullet">
@@ -14,7 +14,7 @@ import '../layouts/Layout.astro'
     <li>I tilfælde af krisesituation, kan Dankort stadig bruges</li>
 </ul>
 </div>
-<div class="Grønt-find-kort">
+<div class="kort">
 <img src="/src/assets/mobil-gkort.svg" alt="Grønt betalingskort">
 <h3>Andre kort</h3>
 <ul id="bullet">
@@ -24,7 +24,7 @@ import '../layouts/Layout.astro'
     <li>Kan tilføjes i digitale wallets</li>
 </ul>
 </div>
-<div class="Blåt-find-kort">
+<div class="kort">
 <img src="/src/assets/mobil-bkort.svg" alt="Blåt kombikort">
 <h3>Kombikort</h3>
 <ul id="bullet">
@@ -40,18 +40,54 @@ import '../layouts/Layout.astro'
 </article>
 
 <style>
-#bullet {
-  list-style: disc;
+.kort h3{
+    text-align: center;
+    padding: 1rem;
 }
+.kort{
+    display: flex;
+    flex-direction: column;
+}
+ #findditkorth2{
+    text-align: center;
+    padding-top: 8rem;
+    padding-left: 2rem;
+ }
+
+#bullet li{
+  list-style: disc;
+  margin-bottom: 1rem;
+}
+
 #Find-dit-kort-grid {
   display: flex;
-  gap: 20rem;
+  gap: 2rem;
 
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 
-  padding: 20px;
-
- 
+  padding: 3rem;
 }
+
+.kort {
+  min-width: 85%;
+  scroll-snap-align: center;
+}
+
+/* DESKTOP VERSION */
+
+    @media (min-width: 768px) {
+
+#Find-dit-kort-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1200px;
+     margin: 0 auto;
+     gap: var(--gap-xl);
+     width: auto;
+}
+#bullet li{
+  margin-bottom: 2rem;
+}
+    }
 </style>
