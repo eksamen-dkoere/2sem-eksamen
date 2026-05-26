@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Countdown from '../components/Countdown.astro';
+import Pagination from '../components/Pagination.astro';
 import '../styles/effects.css';
 import '../styles/global.css';
 import '../styles/reset.css';
@@ -50,9 +51,12 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
     mediaUrl={product.image} 
     altText={product.title}
   /></a>
-  
 ))}
             </section>
+
+    <div style="margin-top: 3rem; display:flex; justify-content:center;">
+        <Pagination current="0" />
+    </div>
         </section>
     </main>
 </Layout>
