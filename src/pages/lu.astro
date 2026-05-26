@@ -5,10 +5,11 @@ import Welcome from '../components/Welcome.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro'
 import Countdown from '../components/Countdown.astro';
-
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-
 import Card from '../components/Card.astro';
+import OeremaerketSection from '../components/OeremaerketSection.astro';
+import Values from '../components/Values.astro';
+
 import '../styles/effects.css';
 import '../styles/global.css';
 import '../styles/reset.css';
@@ -18,31 +19,16 @@ import '../styles/variables.css';
 
 ---
 
-<Layout>
 
-<Hero/>
+<Layout>
+<main>
 <Breadcrumbs />
   <section >
-  <div class="card-grid">
-<Card 
-  badgeText="Vi donerer til Den Danske Naturfond" 
-  overlayText="Denne tekst er indsat af mig"
-  mediaUrl="/images/kalkgrav.webp" 
-    altText="Flot naturlandskab"
-/>
+<Values />
+<OeremaerketSection />
 
-
-<Card 
-  badgeText="Test"
-  mediaUrl="/src/assets/tree.svg"
-  altText="Mit ikon"
-/>
-
-    </div>
-  <Countdown />
-  <Countdown forceMobile={true} />
 </section>
-  
+  </main>
 </Layout>
 
 

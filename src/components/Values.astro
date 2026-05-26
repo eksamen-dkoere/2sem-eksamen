@@ -1,0 +1,49 @@
+---
+//@ts-nocheck
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+import Buttons from '../components/Buttons.astro'
+
+import CardKarrusel from '../components/CardKarrusel.astro';
+
+const mineManuelleKort = [
+  {
+    href: "/om_os",
+    badgeText: "Smart",
+    mediaUrl: "/images/repsmark.webp",
+    overlayText: "Med Øremærket bliver dine betalinger til mere end bare et køb. Hver gang du bruger Dankort, er du med til at støtte dansk natur – helt automatisk."
+  },
+  {
+    href: "/om_os",
+    badgeText: "Hurtigt",
+    mediaUrl: "/images/betaling.webp",
+    overlayText: "Dankort gør det nemt at betale hurtigt og fleksibelt i hverdagen. Du kan fokusere på øjeblikket uden altid at skulle tænke over saldoen først."
+  },
+  {
+    href: "/om_os",
+    badgeText: "Sikkert",
+    mediaUrl: "/images/nyhavn.webp",
+    overlayText: "Dankort is bygget på en dansk betalingsinfrastruktur med fokus på stabilitet og tryghed. Det giver en sikker løsning, du kan stole på i hverdagen."
+  }
+]
+---
+
+<section>
+  <h2>Vores værdier</h2>
+  <CardKarrusel items={mineManuelleKort} />
+</section>
+
+<style>
+  /* Du kan lade <style> blocken være tom, eller style selve <section> eller <h2> her, hvis der mangler margin/padding */
+  section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 2rem;
+  }
+</style>
