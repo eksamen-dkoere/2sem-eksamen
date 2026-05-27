@@ -1,0 +1,166 @@
+---
+//@ts-nocheck
+import '../styles/effects.css';
+import '../styles/reset.css';
+import Partner from '../components/Partner1.astro'
+
+import Emmerys from '../assets/partners/emmerys.svg'
+import FaellesKassen from '../assets/partners/faelles_kassen.svg'
+import Flowering from '../assets/partners/flowering.svg'
+import FasterOikos from '../assets/partners/faster_oikos.svg'
+import Genbyg from '../assets/partners/genbyg.svg'
+import Kirppu from '../assets/partners/kirppu.svg'
+import LollandsBank from '../assets/partners/lollands_bank.svg'
+import Loeberen from '../assets/partners/loeberen.svg'
+import Merkur from '../assets/partners/merkur.svg'
+import RedMaden from '../assets/partners/red_maden.svg'
+import Rise from '../assets/partners/rise.svg'
+import Sport24 from '../assets/partners/sport24.svg'
+import Sportigan from '../assets/partners/sportigan.svg'
+---
+<!-- Selve karrusel-rammen der skærer det overskydende væk -->
+<div class="logo-carousel glass">
+    <!-- Logobåndet der indeholder TO identiske rækker -->
+    <div class="logo-track">
+        
+        <!-- RÆKKE 1 -->
+        <div class="logo-group">
+            <Partner><Emmerys/></Partner>
+            <Partner><FaellesKassen/></Partner>
+            <Partner>
+        <Flowering/>
+    </Partner>
+
+    <Partner>
+        <FasterOikos/>
+    </Partner>
+
+    <Partner>
+        <Genbyg/>
+    </Partner>
+
+    <Partner>
+        <Kirppu/>
+    </Partner>
+
+    <Partner>
+        <LollandsBank/>
+    </Partner>
+
+    <Partner>
+        <Loeberen/>
+    </Partner>
+
+    <Partner>
+        <Merkur/>
+    </Partner>
+
+    <Partner>
+        <RedMaden/>
+    </Partner>
+
+    <Partner>
+        <Rise/>
+    </Partner>
+
+    <Partner>
+        <Sport24/>
+    </Partner>
+
+    <Partner>
+        <Sportigan/>
+    </Partner>
+        </div>
+
+        <!-- RÆKKE 2 (Præcis kopi af række 1 - vigtigt for det uendelige loop!) -->
+        <div class="logo-group" aria-hidden="true">
+            <Partner><Emmerys/></Partner>
+            <Partner><FaellesKassen/></Partner>
+   <Partner>
+        <Flowering/>
+    </Partner>
+
+    <Partner>
+        <FasterOikos/>
+    </Partner>
+
+    <Partner>
+        <Genbyg/>
+    </Partner>
+
+    <Partner>
+        <Kirppu/>
+    </Partner>
+
+    <Partner>
+        <LollandsBank/>
+    </Partner>
+
+    <Partner>
+        <Loeberen/>
+    </Partner>
+
+    <Partner>
+        <Merkur/>
+    </Partner>
+
+    <Partner>
+        <RedMaden/>
+    </Partner>
+
+    <Partner>
+        <Rise/>
+    </Partner>
+
+    <Partner>
+        <Sport24/>
+    </Partner>
+
+    <Partner>
+        <Sportigan/>
+    </Partner>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* Containeren der skjuler alt, der ryger ud over skærmens kant */
+.logo-carousel {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    padding: 2rem 0; /* Giver lidt luft i bunden og toppen som på dine billeder */
+    position: relative;
+}
+
+/* De to grupper placeres ved siden af hinanden i et flex-track */
+.logo-track {
+    display: flex;
+    width: max-content;
+    animation: scrollUendeligt 25s linear infinite;
+}
+
+/* Hver gruppe indeholder selve logo-komponenterne */
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Afstanden mellem dine logo-kort */
+    padding-right: 2rem; /* Vigtigt: Skal matche dit gap for et flydende loop */
+}
+
+/* Stopper animationen, hvis brugeren holder musen over (valgfrit, men god UX) */
+.logo-carousel:hover .logo-track {
+    animation-play-state: paused;
+}
+
+/* Selve animationen der rykker båndet præcis halvt tilbage (bredden af én gruppe) */
+@keyframes scrollUendeligt {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+</style>

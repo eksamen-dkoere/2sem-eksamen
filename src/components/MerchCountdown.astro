@@ -1,0 +1,46 @@
+---
+//@ts-nocheck
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+import Buttons from '../components/Buttons.astro'
+import Countdown from '../components/Countdown.astro';
+
+---
+
+<section class="sneakpeak_grid">
+    <section class="sneakpeak_tekst">
+  <h2>Overraskelse på vej!</h2>
+  <h3>Vil du se et sneak peak?</h3>
+  </section>
+  <section class="sneakpeak_bottom">
+  <Countdown />
+  <Buttons
+    text="Se sneak peak her"
+    variant="red500"
+    link="/sneak_peak"
+    />
+</section>
+</section>
+
+<style>
+    .sneakpeak_grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-m);
+    }
+      .sneakpeak_test {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .sneakpeak_bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--gap-s);
+    }
+</style>

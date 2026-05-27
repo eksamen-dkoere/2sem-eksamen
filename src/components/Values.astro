@@ -5,9 +5,8 @@ import '../styles/global.css';
 import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
-import Buttons from '../components/Buttons.astro'
-
 import CardKarrusel from '../components/CardKarrusel.astro';
+import Pagination from '../components/Pagination.astro';
 
 const mineManuelleKort = [
   {
@@ -26,7 +25,7 @@ const mineManuelleKort = [
     href: "/om_os",
     badgeText: "Sikkert",
     mediaUrl: "/images/nyhavn.webp",
-    overlayText: "Dankort is bygget på en dansk betalingsinfrastruktur med fokus på stabilitet og tryghed. Det giver en sikker løsning, du kan stole på i hverdagen."
+    overlayText: "Dankort is bygget på en dansk betalingsinfrastruktur med fokus på stabilitet og tryghed. Det giver een sikker løsning, du kan stole på i hverdagen."
   }
 ]
 ---
@@ -34,10 +33,13 @@ const mineManuelleKort = [
 <section>
   <h2>Vores værdier</h2>
   <CardKarrusel items={mineManuelleKort} />
+
+    <div style="margin-top: 3rem; display:flex; justify-content:center;">
+        <Pagination current="0" />
+    </div>
 </section>
 
 <style>
-  /* Du kan lade <style> blocken være tom, eller style selve <section> eller <h2> her, hvis der mangler margin/padding */
   section {
     padding: 4rem 2rem;
     text-align: center;
