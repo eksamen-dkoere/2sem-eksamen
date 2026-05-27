@@ -11,16 +11,15 @@ interface Props {
   altText?: string;
   inlineSvg?: string;
   overlayText?: string;
-  isHoverCard?: boolean; // NYT: En indstilling der kan være sand eller falsk
+  isHoverCard?: boolean;
 }
 
-// Vi giver isHoverCard en standardværdi på 'false', så dine gamle kort IKKE ændrer sig
 const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCard = false } = Astro.props;
 ---
 
 <div class={`card glass ${isHoverCard ? 'has-hover' : ''}`}>
   <div class="card-badge">
-    {badgeText}
+    <h4>{badgeText}</h4>
   </div>
 
   <div class="card-content">
@@ -70,10 +69,7 @@ const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCa
   background-color: var(--badge-bg);
   color: var(--badge-text);
   padding: 16px 24px;
-  font-weight: bold;
-  font-family: "Raleway", "Helvetica Neue", sans-serif;
   border-bottom-right-radius: 16px;
-
 }
 
 /* Badge buer */
@@ -106,7 +102,6 @@ const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCa
   position: absolute;
   inset: 0;
   z-index: 5;
-  
 }
 
 /* Billeder */
@@ -131,7 +126,7 @@ const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCa
   display: block;
 }
 
-/* Overlay tekst nederst centreret */
+/* Overlay tekst nederst til venstre (IKKE FELD LÆNGERE) */
 .card-overlay-text {
   position: absolute;
   bottom: 0;
@@ -140,38 +135,31 @@ const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCa
   z-index: 20;
   color: var(--white);
   font-size: 1rem;
-  font-weight: bold;
-  text-align: left;
+  font-weight: normal; /* RETTET: Ikke længere bold */
+  text-align: left; /* Tvinger teksten til venstre uanset forældre-elementer */
   padding: 40px 20px 20px 20px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
   
-  /* Standard: Teksten er fuldt synlig på almindelige kort */
   opacity: 1; 
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-
-/* --- HOVER EFFEKT (Gælder KUN kort med klassen .has-hover) --- */
-
-/* Gør kortet lidt mindre som standard, hvis det er et hover-kort */
+/* --- HOVER EFFEKT --- */
 .card.has-hover {
   transform: scale(0.93);
 }
 
-/* Skjul teksten som standard på hover-kort */
 .card.has-hover .card-overlay-text {
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
 }
 
-/* Når man hoverer over karrusel-linket, og kortet ER et hover-kort: Voks! */
 :global(.karrusel_item:hover) .card.has-hover {
   transform: scale(1.03);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* Når man hoverer over karrusel-linket, og kortet ER et hover-kort: Vis tekst! */
 :global(.karrusel_item:hover) .card.has-hover .card-overlay-text {
   opacity: 1;
   transform: translateY(0);
