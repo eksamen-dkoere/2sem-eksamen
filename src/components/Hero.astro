@@ -18,11 +18,11 @@ import Buttons from '../components/Buttons.astro'
 
   </video>
     <div id="text-box-hero" class="glass">
-    <h1>Støt <b>Øremærket</b> - <br> Brug Dankort i dag</h1>
-    <div id="hero-text-flex"> 
-    <h2>Betal smart</h2>
-    <h2>Betal hurtigt</h2>
-    <h2>Betal sikkert</h2>
+      <h1>Støt <span class="ocr">Øremærket</span> - <br> Brug Dankort i dag</h1>
+      <div id="hero-text-flex"> 
+        <h4>Betal smart</h4>
+        <h4>Betal hurtigt</h4>
+        <h4>Betal sikkert</h4>
     </div>
    
     <div id="buttons-hero">
@@ -41,91 +41,80 @@ import Buttons from '../components/Buttons.astro'
 </article>
 
 <style>
+  #buttons-hero{
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-xs);
+  }
 
-#buttons-hero{
+  #text-box-hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
     display: flex;
     flex-direction: column;
-    gap: var(--gap-xs);
-    width: 200px;
-}
-
-#text-box-hero {
-  position: absolute;
-   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  color: white;
-
-
-}
-
-.hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: -1;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-}
-
-#buttons-hero{
-}
-
-#hero-text-flex{
-    display: flex;
-    gap: 40px;
-flex-direction: column;
-align-items: flex-start;
-
-}
-#text-box-hero{
-
-display: flex;
-flex-direction: column;
-gap: 40px;
-width: 328px;
-height: 450px;
-padding: 25px;
-
-}
-@media (min-width: 700px) {
-#buttons-hero{
-    flex-direction: row;
-    gap: var(--gap-m);
-    width: 500px;
-}
-#hero-text-flex{
-    display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   
-}
-  #text-box-hero {
-    left: 30%;
-    display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-    width: 800px;
-    height: 400px;
-    gap: 65px;
+    gap: var(--gap-xl);
+    width: 95vw;
+    padding: var(--gap-s);
+    border-radius: var(--radius-xl);
   }
-}
-/* HUSK AT TILFØJE EN KNAP MERE */
+
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  #hero-text-flex{
+    display: flex;
+    gap: var(--gap-m);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  span.ocr {
+    font-family: "ocr-a-std", monospace, sans-serif;
+  }
+
+  @media (min-width: 769px) {
+  #buttons-hero{
+      gap: var(--gap-l);
+  }
+  #hero-text-flex{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+  }
+    #text-box-hero {
+      left: 39%;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 770px;
+      gap: var(--gap-xl);
+    }
+  }
+  /* HUSK AT TILFØJE EN KNAP MERE */
 </style>
