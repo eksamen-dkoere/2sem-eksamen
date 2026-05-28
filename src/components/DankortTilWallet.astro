@@ -1,0 +1,53 @@
+---
+//@ts-nocheck
+import '../layouts/Layout.astro';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+import skraldespand from '../assets/skraldespand.svg';
+import kortscan from '../assets/kortscan.svg';
+import checkmark from '../assets/checkmark.svg';
+import Pagination from '../components/Pagination.astro';
+import CardKarrusel from '../components/CardKarrusel.astro';
+
+const mineManuelleKort = [
+  {
+    href: "",
+    badgeText: "Step 1",
+    mediaUrl: "/assets/skraldespand.svg",
+    overlayText: ""
+  },
+  {
+    href: "",
+    badgeText: "Step 2",
+    mediaUrl: "/assets/kortscan.svg",
+    overlayText: ""
+  },
+  {
+    href: "",
+    badgeText: "Step 3",
+    mediaUrl: "/assets/checkmark.svg",
+    overlayText: ""
+  }
+]
+---
+
+<section class="step_grid">
+  <h2>Tilføj dit Dankort i din digitale wallet</h2>
+ 
+  <CardKarrusel items={mineManuelleKort} />
+
+      <div style="margin-top: 3rem; display:flex; justify-content:center;">
+        <Pagination current="0" />
+    </div>
+</section>
+
+<style>
+    .step_grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
