@@ -1,6 +1,7 @@
 ---
 //@ts-nocheck
 import Buttons from '../components/Buttons.astro'
+import Blobs from '../components/Blobs.astro'
 ---
 <section id="kortFortalt">
     <div id="kortFortalt-text">
@@ -23,6 +24,16 @@ import Buttons from '../components/Buttons.astro'
         </div>
     </div>
 </section>
+<div class="green-blob1">
+    <Blobs 
+    color="green"
+    size="extra_large"/>
+</div>
+<div class="yellow-blob">
+    <Blobs 
+    color="yellow"
+    size="large"/>
+</div>
 
 <style>
     #buttons-kortfortalt{
@@ -38,6 +49,7 @@ import Buttons from '../components/Buttons.astro'
 
     #kortFortalt {
         padding-top: var(--gap-xl);
+        z-index: 1;
     }
 
     #kortFortalt-text{   
@@ -58,6 +70,18 @@ import Buttons from '../components/Buttons.astro'
         justify-self: end;
         transform: rotate(45deg);
     }
+
+    .green-blob1 {
+		position: absolute;
+		top: -50px;
+		left: 300px;
+	}
+
+	.yellow-blob {
+		position: absolute;
+		top: -200px;
+		left: -200px;
+	} 
 
 
 /* DESKTOP VERSION */
@@ -90,5 +114,14 @@ import Buttons from '../components/Buttons.astro'
             width: 520px;
             height: 326.293px;
         }
-    }
+
+        .green-blob1 {
+			top: 100px;
+			left: 250px;
+		}
+
+		.yellow-blob {
+			top: 0;
+			left: 800px;
+    } }
 </style>

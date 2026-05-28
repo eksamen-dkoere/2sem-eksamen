@@ -11,25 +11,26 @@ import Values from '../components/Values.astro';
 import SocialsKarrusel from '../components/SocialsKarrusel.astro';
 import MerchCountdown from '../components/MerchCountdown.astro';
 import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandingpage.astro';
+import Blobs from '../components/Blobs.astro'
 ---
 
 <Layout>
     <Hero/>
 	<div class="bg">
-    <main>
-        <!-- Tilføj overflow: hidden her for en sikkerheds skyld -->
-        <article class="main_section" style="width: 100%;">
-            <Kortfortalt />
-            <Values />
-            <OeremaerketSection />
-            <SamarbejdspartnerLandingpage />
-            <MerchCountdown />
-            <SocialsKarrusel />
-		</article>
-    </main>
+		<main>
+			<!-- Tilføj overflow: hidden her for en sikkerheds skyld -->
+			<article class="main_section" style="width: 100%;">
+				<Kortfortalt />
+				<Values />
+				<OeremaerketSection />
+				<SamarbejdspartnerLandingpage />
+				<MerchCountdown />
+				<SocialsKarrusel />
+			</article>
+		</main>
 	
 		<img id="kortFortalt-dk" src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort" aria-hidden="true">
-   		<img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort">
+   		<img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort" aria-hidden="true">
 	</div>
 </Layout>
 
@@ -50,6 +51,7 @@ import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandin
 		top: 100px;
 		left: 280px;
 		transform: rotate(43deg);
+		z-index: 1;
 	}
 
 	#desk-dk {
@@ -62,6 +64,7 @@ import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandin
 			flex-direction: column;
 			gap: var(--gap-xxl);
 			padding: 0;
+			z-index: 100;
 		}
 		#kortFortalt-dk {
 			display: none;
@@ -74,6 +77,7 @@ import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandin
 			right: 10vw;
 			transform: rotate(-36.14deg);
 			width: 35vw;
+			z-index: 1;
 		}
 	}
 </style>

@@ -5,8 +5,9 @@ import '../styles/global.css';
 import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
-import Buttons from '../components/Buttons.astro'
+import Buttons from '../components/Buttons.astro';
 import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
+import Blobs from '../components/Blobs.astro'
 ---
 
 <section class="overordnet_grid">
@@ -98,8 +99,21 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
         <SamarbejdspartnerKarrusel />
     </section>
 </section>
+<div class="green-blob3">
+			<Blobs 
+			color="green"
+			size="large"/>
+		</div>
+		<div class="red-blob2">
+			<Blobs 
+			color="red"
+			size="large"/>
+		</div>
 
 <style>
+    section {
+        z-index: 100;
+    }
     .overordnet_grid {
         display: flex;
         flex-direction: column;
@@ -150,6 +164,18 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
         display: block;
     }
 
+    .green-blob3 {
+		position: absolute;
+		top: 1800px;
+		left: -350px;
+	}
+
+	.red-blob2 {
+		position: absolute;
+		top: 1800px;
+		right: -350px;
+	}
+
     @media (min-width: 768px) {
         .coin {
             width: 4rem;
@@ -158,5 +184,14 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
         .smaller {
             width: 1.5rem;
         }
+        .green-blob3 {
+			top: 2200px;
+			left: -300px;
+		}
+
+		.red-blob2 {
+			top: 2200px;
+			right: -300px;
+		}
     }
 </style>

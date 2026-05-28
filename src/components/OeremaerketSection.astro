@@ -6,9 +6,10 @@ import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
 import Buttons from '../components/Buttons.astro'
+import Blobs from '../components/Blobs.astro'
 ---
 
-<div class="card glass">
+<section class="card glass">
   <!-- Badge -->
   <div class="card-badge">
     <h2>Øremærket</h2>
@@ -27,9 +28,22 @@ import Buttons from '../components/Buttons.astro'
           link="/om_os"/>
       </div>
     </div>
-  </div>
-
+  </section>
+  <div class="green-blob2">
+			<Blobs 
+			color="green"
+			size="extra_large"/>
+		</div>
+		<div class="blue-blob2">
+			<Blobs 
+			color="blue"
+			size="extra_large"/>
+		</div>
+    
 <style>
+  section {
+    z-index: 100;
+  }
 /* Variabler – light mode */
 :global(:root) {
   --badge-bg: var(--white);
@@ -116,6 +130,18 @@ import Buttons from '../components/Buttons.astro'
   padding-bottom: 1rem;
 }
 
+.green-blob2 {
+		position: absolute;
+		top: 1300px;
+		left: -100px;
+	}
+
+	.blue-blob2 {
+		position: absolute;
+		top: 1300px;
+		right: -100px;
+	}
+
 @media (max-width: 767px) {
   .card {
     aspect-ratio: 3/4;
@@ -126,5 +152,14 @@ import Buttons from '../components/Buttons.astro'
   .card-overlay-text {
     width: 95vw;
   }
+  .green-blob2 {
+			top: 1000px;
+			left: -300;
+		}
+
+		.blue-blob2 {
+			top: 1000px;
+			right: -300px;
+		}
 }
 </style>

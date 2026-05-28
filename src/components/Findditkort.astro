@@ -1,6 +1,6 @@
 ---
-import '../layouts/Layout.astro'
 import Pagination from '../components/Pagination.astro'
+import Blobs from '../components/Blobs.astro'
 ---
 <section>
     <h2 id="findditkorth2">Forskel på <b>Dankort</b> - og andre kort</h2>
@@ -41,8 +41,16 @@ import Pagination from '../components/Pagination.astro'
         <Pagination current="0" />
     </div>
 </section>
+<div class="yellow-blob">
+    <Blobs 
+    color="yellow"
+    size="small"/>
+</div>
 
 <style>
+    section {
+        z-index: 100;
+    }
     .pagination {
         margin-top: var(--gap-s);
         display:flex;
@@ -91,6 +99,12 @@ import Pagination from '../components/Pagination.astro'
         scroll-snap-align: center;
     }
 
+    .yellow-blob {
+		position: absolute;
+		top: 100px;
+		left: 100px;
+	}
+
 /* DESKTOP VERSION */
     @media (min-width: 768px) {
         #Find-dit-kort-grid {
@@ -116,6 +130,11 @@ import Pagination from '../components/Pagination.astro'
 
         .pagination {
             display: none;
+        }
+
+        .yellow-blob {
+            top: 80px;
+            left: 350px;
         }
     }
 </style>
