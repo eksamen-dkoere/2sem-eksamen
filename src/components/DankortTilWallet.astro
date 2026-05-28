@@ -7,6 +7,7 @@ import '../styles/typography.css';
 import '../styles/variables.css';
 import Pagination from '../components/Pagination.astro';
 import CardKarrusel from '../components/CardKarrusel.astro';
+import Blobs from '../components/Blobs.astro';
 
 const mineManuelleKort = [
   {
@@ -84,6 +85,21 @@ const mineManuelleKort = [
       <Pagination current="0" />
     </div>
 </section>
+<div class="green-blob">
+    <Blobs 
+    color="green"
+    size="medium"/>
+</div>
+<div class="red-blob">
+    <Blobs 
+    color="red"
+    size="small"/>
+</div>
+<div class="blue-blob">
+    <Blobs 
+    color="blue"
+    size="large"/>
+</div>
 
 <style>
   .pagination {
@@ -108,9 +124,41 @@ const mineManuelleKort = [
     color: var(--white)
   }
 
+  .green-blob {
+		position: absolute;
+		bottom: -200px;
+		left: -200px;
+	} 
+
+    .red-blob {
+		position: absolute;
+		bottom: -200px;
+		left: -200px;
+	} 
+
+    .blue-blob {
+		position: absolute;
+		bottom: -200px;
+		right: -200px;
+	} 
+
   @media (min-width: 768px) {
     .pagination {
       display: none;
     }
+    .green-blob {
+            bottom: 0;
+            left: -200px;
+        } 
+
+        .red-blob {
+            bottom: -200px;
+            left: -200px;
+        } 
+
+        .blue-blob {
+            bottom: -200px;
+            right: -200px;
+        } 
   }
 </style>

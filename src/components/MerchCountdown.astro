@@ -5,27 +5,40 @@ import '../styles/global.css';
 import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
-import Buttons from '../components/Buttons.astro'
+import Buttons from '../components/Buttons.astro';
 import Countdown from '../components/Countdown.astro';
-
+import Blobs from '../components/Blobs.astro';
 ---
 
 <section class="sneakpeak_grid">
-    <section class="sneakpeak_tekst">
-  <h2>Overraskelse på vej!</h2>
-  <h3>Vil du se et sneak peak?</h3>
-  </section>
-  <section class="sneakpeak_bottom">
-  <Countdown />
-  <Buttons
-    text="Se sneak peak her"
-    variant="red500"
-    link="/sneak_peak"
-    />
+    <div class="sneakpeak_tekst">
+        <h2>Overraskelse på vej!</h2>
+        <h3>Vil du se et sneak peak?</h3>
+    </div>
+    <div class="sneakpeak_bottom">
+        <Countdown />
+        <Buttons
+            text="Se sneak peak her"
+            variant="red500"
+            link="/sneak_peak"
+        />
+    </div>
 </section>
-</section>
+<div class="blue-blob">
+    <Blobs 
+    color="blue"
+    size="small"/>
+</div>
+<div class="green-blob">
+    <Blobs 
+    color="green"
+    size="medium"/>
+</div>
 
 <style>
+    section {
+        z-index: 100;
+    }
     .sneakpeak_grid {
         display: flex;
         flex-direction: column;
@@ -42,5 +55,29 @@ import Countdown from '../components/Countdown.astro';
         flex-direction: column;
         align-items: center;
         gap: var(--gap-s);
+    }
+
+    .blue-blob {
+		position: absolute;
+		bottom: 850px;
+		left: 200px;
+	}
+
+	.green-blob {
+		position: absolute;
+		bottom: 700px;
+		right: 200px;
+	}
+
+    @media (max-width: 768px) {
+        .blue-blob {
+		bottom: 850px;
+		left: -100px;
+	}
+
+	.green-blob {
+		bottom: 700px;
+		right: -200px;
+	}
     }
 </style>

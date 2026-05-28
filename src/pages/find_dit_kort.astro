@@ -8,16 +8,23 @@ import DankortTilWallet from '../components/DankortTilWallet.astro';
 ---
 
 <Layout>
-    <main >
-        <Breadcrumbs />
-        <div class="main_section">
-            <Findditkort/>
-            <DankortTilWallet />
-        </div>
-    </main>
+    <div class="bg">
+        <main >
+            <Breadcrumbs />
+            <div class="main_section">
+                <Findditkort/>
+                <DankortTilWallet />
+            </div>
+        </main>
+    </div>
 </Layout>
 
 <style>
+    .bg {
+		position: relative;
+		overflow: hidden;
+	}
+
     .main_section {
 		display: flex;
 		flex-direction: column;

@@ -7,6 +7,7 @@ import '../styles/typography.css';
 import '../styles/variables.css';
 import CardKarrusel from '../components/CardKarrusel.astro';
 import Pagination from '../components/Pagination.astro';
+import Blobs from '../components/Blobs.astro';
 
 const mineManuelleKort = [
   {
@@ -38,11 +39,22 @@ const mineManuelleKort = [
         <Pagination current="0" />
     </div>
 </section>
+<div class="blue-blob1">
+			<Blobs 
+			color="blue"
+			size="large"/>
+		</div>
+		<div class="red-blob1">
+			<Blobs 
+			color="red"
+			size="large"/>
+		</div>
 
 <style>
   section {
     padding-top: 100px;
     text-align: center;
+    z-index: 100;
   }
   
   h2 {
@@ -55,6 +67,18 @@ const mineManuelleKort = [
       justify-content:center;
     }
 
+    .blue-blob1 {
+		position: absolute;
+		top: 700px;
+		left: 200px;
+	}
+
+	.red-blob1 {
+		position: absolute;
+		top: 700px;
+		left: 600px;
+  }
+
   @media (max-width: 768px) {
     section {
       padding: var(--gap-xl) 0;
@@ -65,5 +89,14 @@ const mineManuelleKort = [
     .pagination {
       margin-top: var(--gap-xxs);
     }
+    .blue-blob1 {
+			top: 400px;
+			left: -300px;
+		}
+
+		.red-blob1 {
+			top: 400px;
+			left: 300px;
+		}
   }
 </style>
