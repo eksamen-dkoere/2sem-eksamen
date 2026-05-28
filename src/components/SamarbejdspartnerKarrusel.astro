@@ -127,11 +127,13 @@ import Sportigan from '../assets/partners/sportigan.svg'
 <style>
     /* Containeren der skjuler alt, der ryger ud over skærmens kant */
 .logo-carousel {
-    overflow: hidden;
+    overflow: hidden; /* Klipper logoerne af */
     width: 100%;
+    max-width: 100%; /* Tvinger den til IKKE at blive bredere end skærmen */
     display: flex;
-    padding: 2rem 0; /* Giver lidt luft i bunden og toppen som på dine billeder */
+    padding: 2rem 0;
     position: relative;
+    box-sizing: border-box; /* Sikrer at padding ikke driller bredden */
 }
 
 /* De to grupper placeres ved siden af hinanden i et flex-track */

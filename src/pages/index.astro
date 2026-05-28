@@ -19,29 +19,18 @@ import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandin
 ---
 
 <Layout>
-	<Hero/>
-	<main>
-		<section class="main_section">
-			<div>
-	<Kortfortalt/>
-	</div>
-	<div>
-	<Values />
-	</div>
-	<div>
-<OeremaerketSection />
-</div>
-<div>
-	 <SamarbejdspartnerLandingpage />
-</div>
-<div>
-	<MerchCountdown />
-</div>
-<div>
-	<SocialsKarrusel />
-</div>
-</section>
-	</main>
+    <Hero/>
+    <main>
+        <!-- Tilføj overflow: hidden her for en sikkerheds skyld -->
+        <section class="main_section" style="overflow: hidden; width: 100%;">
+             <Kortfortalt />
+            <Values />
+            <OeremaerketSection />
+            <SamarbejdspartnerLandingpage />
+            <MerchCountdown />
+            <SocialsKarrusel />
+        </section>
+    </main>
 </Layout>
 
 <style>
