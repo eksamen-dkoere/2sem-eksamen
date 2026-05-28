@@ -24,14 +24,13 @@ const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCa
 
   <div class="card-content">
     {inlineSvg ? (
-      <div class="svg-wrapper" set:html={inlineSvg} title={altText} />
+    <div class="svg-wrapper" set:html={inlineSvg} title={altText} />
     ) : (
       <img src={mediaUrl} alt={altText} loading="lazy" />
     )}
-
-    <div class="card-overlay-text">
-      {overlayText}
-    </div>
+      <div class="card-overlay-text">
+        {overlayText}
+      </div>
   </div>
 </div>
 
@@ -121,9 +120,10 @@ const { badgeText, mediaUrl, altText = "Kort", inlineSvg, overlayText, isHoverCa
 }
 
 .svg-wrapper :global(svg) {
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: block;
+  margin: 0 auto;
 }
 
 /* Overlay tekst nederst til venstre (IKKE FELD LÆNGERE) */

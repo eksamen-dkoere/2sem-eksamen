@@ -16,6 +16,7 @@ interface KarruselItem {
   mediaUrl: string;
   altText?: string;
   overlayText?: string;
+  inlineSvg?: string;
 }
 
 interface Props {
@@ -33,7 +34,8 @@ const { items } = Astro.props;
         mediaUrl={item.mediaUrl} 
         altText={item.altText || item.badgeText}
         overlayText={item.overlayText}
-        isHoverCard={true} />
+        isHoverCard={true} 
+        inlineSvg={item.inlineSvg}/>
     </a>
   ))}
 </div>
