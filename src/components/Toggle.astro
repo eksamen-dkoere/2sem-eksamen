@@ -6,6 +6,26 @@
     <span class="toggle-thumb glass"></span>
 </button>
 
+<script>
+  const html = document.documentElement;
+  const button = document.querySelector(".darkmode-toggle");
+
+  // apply saved mode on load
+  if (localStorage.getItem("darkMode") === "enabled") {
+    html.classList.add("dark");
+  }
+
+  button?.addEventListener("click", () => {
+    html.classList.toggle("dark");
+
+    if (html.classList.contains("dark")) {
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      localStorage.setItem("darkMode", "disabled");
+    }
+  });
+</script>
+
 <style>
     .darkmode-toggle {  
         width: 50px;
