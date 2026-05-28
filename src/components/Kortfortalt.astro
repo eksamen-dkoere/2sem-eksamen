@@ -4,8 +4,8 @@ import Buttons from '../components/Buttons.astro'
 ---
 <article id="kortFortalt">
 <div id="kortFortalt-text">
-    <img id="kortFortalt-dk" src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
-   <img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort">
+    <!-- <img id="kortFortalt-dk" src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
+   <img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort"> -->
 <h2>Dankort Øremærket</h2>
 <h3>Kort fortalt -</h3>
 <p>Dankort Øremærket er et initiativ, hvor vi donerer 1 øre til Den Danske Naturfond, for hver gang du betaler med dit Dankort. <br>
@@ -37,8 +37,6 @@ Støt den danske natur - helt uden at det koster ekstra for dig.</p>
     }
 
     #kortFortalt{
-        padding-left: 2rem;
-        padding-top: 4rem;
         gap: var(--gap-m);
         display: grid;
         grid-template-columns: 3fr 1fr;
@@ -55,7 +53,6 @@ Støt den danske natur - helt uden at det koster ekstra for dig.</p>
     }
     
     #kortFortalt-dk{
-       
         position: absolute;
         z-index: 1;
         top: 6rem;
@@ -74,7 +71,6 @@ Støt den danske natur - helt uden at det koster ekstra for dig.</p>
     width: 500px;
 }
     #kortFortalt{
-    padding-top: 10rem;
     max-width: 1200px;
    overflow: visible;
    margin: 0 auto;
@@ -93,7 +89,7 @@ width: 500px;
     display: block;
     position: absolute;
     top: 14rem;
-    right: 3rem;
+    right: -3rem;
     transform: rotate(-36deg);
     width: 520px;
 height: 326.293px;
