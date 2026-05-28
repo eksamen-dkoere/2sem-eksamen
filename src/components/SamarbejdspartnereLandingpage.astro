@@ -12,10 +12,12 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
 <section class="overordnet_grid">
     <section class="text_part">
         <h2>Samarbejdspartnere</h2>
-        <p>Hver gang du bruger <strong>Dankort</strong>, donerer vi 1 øre pr. transaktion.</p>
-        <p>Hvis din <strong>bank</strong> er en af vores samarbejdsparnere donerer de 1 øre pr. transaktion. </p>
-        <p>Hvis du handler i en <strong>butik</strong> der er en af vores samarbejdspartnere donerer de også 1 øre pr. transaktion.</p>
-        <p>Se vores samarbejdspartnere forneden:</p>
+        <div>
+            <p>Hver gang du bruger <strong>Dankort</strong>, donerer vi 1 øre pr. transaktion.</p>
+            <p>Hvis din <strong>bank</strong> er en af vores samarbejdsparnere donerer de 1 øre pr. transaktion. </p>
+            <p>Hvis du handler i en <strong>butik</strong> der er en af vores samarbejdspartnere donerer de også 1 øre pr. transaktion.</p>
+            <p>Se vores samarbejdspartnere forneden:</p>
+        </div>
     </section>
     <section class="illustrations">
         <div class="coin">
@@ -109,7 +111,7 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
     .text_part {
         display: flex;
         flex-direction: column;
-        gap: var(--gap-s);
+        gap: var(--gap-xs);
     }
     
    .illustrations {
@@ -123,12 +125,12 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
     }
 
     .smaller {
-        width: 1.5rem; /* Brug width i stedet for max-width for at låse størrelsen */
+        width: 1rem; /* Brug width i stedet for max-width for at låse størrelsen */
         height: auto;
     }
 
     .coin {
-        width: 4rem;
+        width: 3rem;
         height: auto;
     }
 
@@ -146,5 +148,15 @@ import SamarbejdspartnerKarrusel from './SamarbejdspartnerKarrusel.astro';
         width: 100%;
         height: auto;
         display: block;
+    }
+
+    @media (min-width: 768px) {
+        .coin {
+            width: 4rem;
+            height: auto;
+        }
+        .smaller {
+            width: 1.5rem;
+        }
     }
 </style>

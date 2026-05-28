@@ -1,93 +1,121 @@
 ---
 import '../layouts/Layout.astro'
+import Pagination from '../components/Pagination.astro'
 ---
-<article >
-    <h2 id="findditkorth2">Forskel på <b>Dankort</b> og andre kort</h2>
-<div id="Find-dit-kort-grid">
-<div class="kort">
-<img src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
-<h3>Dankort</h3>
-<ul id="bullet">
-    <li>Dansk betalingsløsning</li>
-    <li>Lavere gebyrer for de danske butikker/webshops</li>
-    <li>Donerer mindst én øre pr. transaktion til Den Danske Naturfond</li>
-    <li>I tilfælde af krisesituation, kan Dankort stadig bruges</li>
-</ul>
-</div>
-<div class="kort">
-<img src="/src/assets/mobil-gkort.svg" alt="Grønt betalingskort">
-<h3>Andre kort</h3>
-<ul id="bullet">
-    <li>International betalingsløsning </li>
-    <li>Sikker online betaling via. diverse sikkerheds aftaler (alt afhængigt af hvilken kortudsteder) </li>
-    <li>Der kan være forskellige fordele som: rejseforskringer, lounge-adgag, cashback eller andre kundefordele </li>
-    <li>Kan tilføjes i digitale wallets</li>
-</ul>
-</div>
-<div class="kort">
-<img src="/src/assets/mobil-bkort.svg" alt="Blåt kombikort">
-<h3>Kombikort</h3>
-<ul id="bullet">
-    <li>Både dansk- og international betalingsløsning</li>
-    <li> Når du handler i Danmark/danske butikker eller webshops, bruges Dankortdelen. </li>
-    <li>Når du handler i andre lande eller internationale butikker/webshops bruges den internationale del. </li>
-    <li>Lavere gebyrer for de danske butikker/webshops </li>
-    <li>Kan tilføjes i digitale wallets</li>
-</ul>
-
-</div>
-</div>
-</article>
+<section>
+    <h2 id="findditkorth2">Forskel på <b>Dankort</b> - og andre kort</h2>
+    <div id="Find-dit-kort-grid">
+        <div class="kort">
+            <img src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
+            <h3>Dankort</h3>
+            <ul id="bullet">
+                <li>Dansk betalingsløsning</li>
+                <li>Lavere gebyrer for de danske butikker/webshops</li>
+                <li>Donerer mindst én øre pr. transaktion til Den Danske Naturfond</li>
+                <li>I tilfælde af krisesituation, kan Dankort stadig bruges</li>
+            </ul>
+        </div>
+        <div class="kort">
+            <img src="/src/assets/mobil-gkort.svg" alt="Grønt betalingskort">
+            <h3>Andre kort</h3>
+            <ul id="bullet">
+                <li>International betalingsløsning </li>
+                <li>Sikker online betaling via. diverse sikkerheds aftaler (alt afhængigt af hvilken kortudsteder) </li>
+                <li>Der kan være forskellige fordele som: rejseforskringer, lounge-adgag, cashback eller andre kundefordele </li>
+                <li>Kan tilføjes i digitale wallets</li>
+            </ul>
+        </div>
+        <div class="kort">
+            <img src="/src/assets/mobil-bkort.svg" alt="Blåt kombikort">
+            <h3>Kombikort</h3>
+            <ul id="bullet">
+                <li>Både dansk- og international betalingsløsning</li>
+                <li> Når du handler i Danmark/danske butikker eller webshops, bruges Dankortdelen. </li>
+                <li>Når du handler i andre lande eller internationale butikker/webshops bruges den internationale del. </li>
+                <li>Lavere gebyrer for de danske butikker/webshops </li>
+                <li>Kan tilføjes i digitale wallets</li>
+            </ul>
+        </div>
+    </div>
+    <div class="pagination">
+        <Pagination current="0" />
+    </div>
+</section>
 
 <style>
-.kort h3{
-    text-align: center;
-    padding: 1rem;
-}
-.kort{
-    display: flex;
-    flex-direction: column;
-}
- #findditkorth2{
-    text-align: center;
-    padding-top: 3rem;
-    padding-left: 2rem;
- }
+    .pagination {
+        margin-top: var(--gap-s);
+        display:flex;
+        justify-content:center;
+    }
 
-#bullet li{
-  list-style: disc;
-  margin-bottom: 1rem;
-}
+    ul {
+        padding-left: 1.2rem;
+    }
 
-#Find-dit-kort-grid {
-  display: flex;
-  gap: 2rem;
+    li {
+        list-style-position: inside;
+    }
 
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+    .kort h3{
+        text-align: center;
+        padding: 1rem;
+    }
 
-  padding: 3rem;
-}
+    .kort{
+        display: flex;
+        flex-direction: column;
+    }
 
-.kort {
-  min-width: 85%;
-  scroll-snap-align: center;
-}
+    #findditkorth2{
+        text-align: left;
+    }
+
+    #bullet li{
+        list-style: disc;
+        margin-bottom: 1rem;
+    }
+
+    #Find-dit-kort-grid {
+        display: flex;
+        gap: 2rem;
+
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+
+        padding-top: var(--gap-s);
+    }
+
+    .kort {
+        min-width: 85%;
+        scroll-snap-align: center;
+    }
 
 /* DESKTOP VERSION */
-
     @media (min-width: 768px) {
+        #Find-dit-kort-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: var(--gap-xl);
+            width: auto;
+        }
 
-#Find-dit-kort-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    max-width: 1200px;
-     margin: 0 auto;
-     gap: var(--gap-xl);
-     width: auto;
-}
-#bullet li{
-  margin-bottom: 2rem;
-}
+        #bullet li{
+            margin-bottom: 2rem;
+        }
+
+        #Find-dit-kort-grid {
+            padding-top: var(--gap-xl);
+        }
+
+        #findditkorth2{
+            text-align: center;
+        }
+
+        .pagination {
+            display: none;
+        }
     }
 </style>

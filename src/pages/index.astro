@@ -1,5 +1,4 @@
 ---
-
 //@ts-nocheck
 import Kortfortalt from '../components/Kortfortalt.astro';
 import Welcome from '../components/Welcome.astro';
@@ -12,41 +11,69 @@ import Values from '../components/Values.astro';
 import SocialsKarrusel from '../components/SocialsKarrusel.astro';
 import MerchCountdown from '../components/MerchCountdown.astro';
 import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandingpage.astro';
-
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
     <Hero/>
+	<div class="bg">
     <main>
         <!-- Tilføj overflow: hidden her for en sikkerheds skyld -->
-        <section class="main_section" style="overflow: hidden; width: 100%;">
-             <Kortfortalt />
+        <article class="main_section" style="width: 100%;">
+            <Kortfortalt />
             <Values />
             <OeremaerketSection />
             <SamarbejdspartnerLandingpage />
             <MerchCountdown />
             <SocialsKarrusel />
-        </section>
+		</article>
     </main>
+	
+		<img id="kortFortalt-dk" src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort" aria-hidden="true">
+   		<img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort">
+	</div>
 </Layout>
 
 <style>
 	.main_section {
 		display: flex;
 		flex-direction: column;
-		gap: var(--gap-m);
-		padding: 2rem;
+		gap: var(--gap-xl);
+		padding: 0 1rem;
+	}
+	.bg {
+		position: relative;
+		overflow: hidden;
+	}
+	
+	#kortFortalt-dk {
+		position: absolute;
+		top: 100px;
+		left: 280px;
+		transform: rotate(43deg);
+	}
+
+	#desk-dk {
+		display: none;
 	}
 
 	@media (min-width: 768px) {
 		.main_section {
-		display: flex;
-		flex-direction: column;
-		gap: var(--gap-xxl);
-		padding: 4rem;
-	}
+			display: flex;
+			flex-direction: column;
+			gap: var(--gap-xxl);
+			padding: 0;
+		}
+		#kortFortalt-dk {
+			display: none;
+		}
+
+		#desk-dk {
+			position: absolute;
+			display: inline-block;
+			top: 170px;
+			right: 10vw;
+			transform: rotate(-36.14deg);
+			width: 35vw;
+		}
 	}
 </style>

@@ -32,10 +32,10 @@ import '../styles/variables.css';
                 </div>
                 
                 {/* Repsmark billede (Rykket ud af sin egen div for nemmere styring) */}
-                <img src="public/images/repsmark.webp" alt="Repsmark" class="img_repsmark">
+                <img src="public/images/repsmark.webp" alt="Repsmark" class="img_repsmark glass">
 
                 <div class="top_accordions">
-                    <Accordion title="Betal smart" content="Med Øremærket bliver dine betalinger til mere end bare et køb. Hver gang du betaler med Dankort, går en del automatisk til at støtte dansk natur – uden at det koster dig ekstra. Et smart valg for både dig og fremtiden." />
+                    <Accordion title="Betal smart" content="Med Øremærket bliver dine betalinger til mere end bare et køb. Hver gang du betaler med Dankort, doneres der automatisk mindst 1 øre til dansk natur – uden at det koster dig ekstra. Et smart valg for både dig og fremtiden." />
                     <Accordion title="Betal hurtigt" content="Dankort gør hverdagen nemmere. Du behøver ikke altid stoppe op og tjekke saldoen, før du betaler, da Dankort giver mulighed for fleksibilitet i øjeblikket. Hurtigt, enkelt og skabt til en travl hverdag."  />
                     <Accordion title="Betal sikkert" content="Dankort er en del af den danske betalingsinfrastruktur og er udviklet med fokus på stabilitet og tryghed. Det betyder, at du kan føle dig sikker i dine betalinger – også hvis internationale betalingssystemer oplever tekniske problemer."  />
                 </div>
@@ -45,22 +45,22 @@ import '../styles/variables.css';
             <section class="middle_section">
                 <div class="middle_text">
                     <h2>Dankort Øremærket</h2>
-                    <h3>Vi donerer til Den Danske Naturfond</h3>
-                    <p>Dankort Øremærket er et initiativ fra Dankort, der har til formål at støtte og styrke den danske natur, gennem donationer til Den Danske Naturfond. 
+                    <h3>- Vi donerer til Den Danske Naturfond</h3>
+                    <p>Dankort Øremærket er et initiativ fra Dankort, der har til formål at styrke den danske natur, gennem donationer til Den Danske Naturfond. 
                     Dankort garanterer mindst 10. mio kr. i årlige donationer til Den Danske Naturfond. Uanset om du betaler med fysisk eller virtuelt kort - donerer Dankort minimum 1 øre til fonden.
                     Det vil altså sige at når du betaler med Dankort er du med til at donerer op til 3 øre pr. transaktion</p>
                      <OmOsKortMedTekst />
                 </div>
                 
                 {/* Luftballon billede (Placeret efter teksten i HTML, så det naturligt ligger nederst på mobil) */}
-                <img src="public/images/luftballon.webp" alt="luftballon" class="img_luftballon">
+                <img src="public/images/luftballon.webp" alt="luftballon" class="img_luftballon glass">
             </section>
 
             {/* SAMARBEJDSPARTNER */}
             <section class="samarbejdspartner">
                 <div class="text">
                     <h2>Vores samarbejdspartnere</h2>
-                    <p>Dankort Øremærket og deres samarbejdspartnere gør det muligt for dig at støtte nemt og enkelt til Den Danske Naturfond...</p>
+                    <p>Dankort Øremærket og deres samarbejdspartnere gør det muligt for dig at støtte nemt og enkelt til Den Danske Naturfond. Gennem deres samarbejde fra bank til butikker gør du en forskel i hverdagen. Og sammen med dem, vokser de små donationer sig større og større. Hver gang du betaler med Dankort hos en tilknyttet samarbejdspartner kan både banken og butikken bidrage en øre til initiativet. På den måde er vores samarbejdspartnere med til at gøre et bæredygtigt initiativ mere tilgængeligt for den almindelige bruger.</p>
                 </div>
                 <Samarbejdspartner/>
             </section>
@@ -75,10 +75,14 @@ import '../styles/variables.css';
         height: auto;
     }
 
+    .top_text h2, .middle_text h3, .middle_text p, .text h2, .text p{
+        padding-bottom: var(--gap-s);
+    }
+
     .overall_grid {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: var(--gap-xxl);
         padding: 1rem;
     }
 
@@ -111,7 +115,10 @@ import '../styles/variables.css';
        DESKTOP STYLING (Fra 768px og op)
        ======================================================== */
     @media (min-width: 768px) {
-        
+        .overall_grid {
+        padding: 0;
+    }
+
         /* Vi nulstiller rækkefølgen på top_section og laver det 2-spaltet */
         .top_section {
             grid-template-columns: 1fr 1fr;
