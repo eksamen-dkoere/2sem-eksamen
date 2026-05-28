@@ -1,6 +1,6 @@
 ---
 //@ts-nocheck
-import Card from './Card.astro'; // RETTET STIEN HER
+import Card from './Card.astro';
 
 import '../styles/effects.css';
 import '../styles/global.css';
@@ -8,6 +8,7 @@ import '../styles/reset.css';
 import '../styles/typography.css';
 import '../styles/variables.css';
 
+// Vi definerer strukturen for de data, karrusellen skal modtage
 interface KarruselItem {
   id?: number | string;
   href: string;
@@ -32,13 +33,13 @@ const { items } = Astro.props;
         mediaUrl={item.mediaUrl} 
         altText={item.altText || item.badgeText}
         overlayText={item.overlayText}
-        isHoverCard={true} 
-      />
+        isHoverCard={true} />
     </a>
   ))}
 </div>
 
 <style>
+  /* Karrusel-containeren (Swipe på mobil, grid på desktop) */
   .karrusel_container {
     display: flex;
     gap: 20px;
@@ -49,26 +50,30 @@ const { items } = Astro.props;
     width: 100%;
   }
 
+  /* De enkelte kort i karrusellen */
   .karrusel_item {
-    flex: 0 0 80%;
+    flex: 0 0 80%; /* Viser 80% af kortet på mobil, så man kan se det næste er på vej */
     max-width: 350px; 
     scroll-snap-align: start;
     text-decoration: none;
   }
 
+  /* Fjern scrollbar-visning på visse browsere (valgfrit, men pænt) */
   .karrusel_container::-webkit-scrollbar {
     height: 6px;
   }
   .karrusel_container::-webkit-scrollbar-thumb {
+   
     border-radius: 4px;
   }
 
+  /* Desktop visning: Skifter automatisk til et 3-kolonne grid */
   @media (min-width: 768px) {
     .karrusel_container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-      overflow: visible;
+      overflow: visible; /* Ingen scroll på desktop */
     }
 
     .karrusel_item {
