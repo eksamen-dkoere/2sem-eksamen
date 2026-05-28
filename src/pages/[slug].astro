@@ -35,22 +35,21 @@ const { product } = Astro.props;
 <Layout title={product.title}>
   <main>
     <Breadcrumbs />
-    <section class="product_grid">
-
-        <div class="hide-on-desktop">
+    <section class="product_grid main_section">
+      <div class="hide-on-desktop">
         <Countdown/>
-        </div>
-        <div class="img">
-          <img src={product.image} alt={product.title} />
-          </div>
+      </div>
+      <div class="img">
+        <img class="glass" src={product.image} alt={product.title} />
+      </div>
       
       <div class="tekst_grid">
         <div>
-      <div class="hide-on-mobile">
-        <Countdown forceMobile={true} />
-        </div>
-        <h1>{product.title}</h1>
-         <h2>{product.price},-</h2>
+          <div class="hide-on-mobile">
+            <Countdown forceMobile={true} />
+          </div>
+            <h2>{product.title}</h2>
+            <h3>{product.price},-</h3>
         </div>
         
         <div class="tekst_grid"> 
@@ -95,18 +94,23 @@ const { product } = Astro.props;
 </Layout> 
 
 <style>
+.main_section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap-xl);
+    padding: 0 1rem;
+	}
+
   .product_grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 760px;
+    gap: var(--gap-s);
     margin: 0 auto;
-    align-items: center;
-    padding: 1.5rem;
   }
 
   .product_grid img {
    border-radius: var(--radius-l);
+   width: 100%;
   }
  
     .hide-on-mobile {
@@ -116,7 +120,7 @@ const { product } = Astro.props;
   .tekst_grid {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: var(--gap-s);
   }
   
   .oplysninger {
@@ -152,10 +156,14 @@ html.dark .custom-select {
 
   /* Desktop version (Skærme over 768px) */
   @media (min-width: 768px) {
+    .main_section {
+      gap: var(--gap-xxl);
+      padding: 0;
+    }
+
     .product_grid {
       grid-template-columns: 1fr 1fr;
       max-width: 1200px;
-      padding: 5rem;
     }
 
   .hide-on-mobile {
@@ -165,6 +173,10 @@ html.dark .custom-select {
     /* På desktop skal mobil-countdownen skjules */
     .hide-on-desktop {
       display: none;
+    }
+
+    h2 {
+      margin-top: var(--gap-xl);
     }
   }
 </style>

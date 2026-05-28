@@ -27,38 +27,35 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
 ---
 
 <Layout title="Merchandise">
-    <main>
-        <Breadcrumbs />
-        <section class="overordnet_grid">
-            <section class="sneak_peak_indhold">
-                <h2>Snart kan du bestille merchandise</h2>
-                <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
+  <main>
+    <Breadcrumbs />
+    <section class="overordnet_grid main_section">
+      <div class="sneak_peak_indhold">
+        <div>
+          <h2>Snart kan du bestille merchandise</h2>
+          <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
+        </div>
+        <p>Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond. Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere. Alle produkter er fremstillet af mindst 85% genanvendte materialer.</p>
+        <Countdown />
+      </div>
 
-                <p>
-                    Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond.
-                    <br><br>
-                    Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere.
-                    <br><br>
-                    Alle produkter er fremstillet af mindst 85% genanvendte materialer.
-                </p>
-                <Countdown />
-            </section>
+      <div>
+        <div class="product_grid">
+          {uniqueProducts.map((product) => (
+            <a class="product-item" href={`/${product.id}`}><Card 
+            badgeText={product.title} 
+            mediaUrl={product.image} 
+            altText={product.title}
+            /></a>
+          ))}
+        </div>
 
-            <section class="product_grid">
-                         {uniqueProducts.map((product) => (
-  <a class="product-item" href={`/${product.id}`}><Card 
-    badgeText={product.title} 
-    mediaUrl={product.image} 
-    altText={product.title}
-  /></a>
-))}
-            </section>
-
-    <div style="margin-top: 3rem; display:flex; justify-content:center;">
-        <Pagination current="0" />
-    </div>
-        </section>
-    </main>
+        <div class="pagination">
+          <Pagination current="0" />
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
 
 
@@ -100,54 +97,45 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
 </script>
 
 <style>
-    main {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+  .main_section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap-xl);
+    padding: 0 1rem;
+	}
+  .pagination {
+    margin-top: var(--gap-s);
+    display:flex;
+    justify-content:center;
+  }
 
-    .overordnet_grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 4rem;
-        padding-bottom: 2rem;
-    }
-
-    .sneak_peak_indhold {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-.product_grid {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.product_grid > .product-item {
-  flex: 0 0 80%; /* mobil: 80% af skærmen */
-  max-width: 350px; /* desktop: pæn bredde */
-  scroll-snap-align: start;
-  text-decoration: none;
-}
-
-@media (min-width: 768px) {
-  .product_grid {
+  .overordnet_grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    overflow: visible; /* ingen scroll på desktop */
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .sneak_peak_indhold {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-s);
+  }
+
+  .product_grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .product_grid > .product-item {
-    flex: none;
-    max-width: none;
+    flex: 0 0 80%; /* mobil: 80% af skærmen */
+    max-width: 350px; /* desktop: pæn bredde */
+    scroll-snap-align: start;
+    text-decoration: none;
   }
-}
-
 
   .product_grid img {
     width: 100% ;
@@ -155,7 +143,24 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
     height: auto ;
     display: block ;
   }
-
   
-  
+  @media (min-width: 768px) {
+    .product_grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      overflow: visible; /* ingen scroll på desktop */
+    }
+    .product_grid > .product-item {
+      flex: none;
+      max-width: none;
+    }
+    .pagination {
+      display: none;
+    }
+    .main_section {
+      gap: var(--gap-xxl);
+      padding: 0;
+    }
+  }
 </style>

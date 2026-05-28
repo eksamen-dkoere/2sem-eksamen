@@ -17,6 +17,7 @@ interface KarruselItem {
   altText?: string;
   overlayText?: string;
   inlineSvg?: string;
+  externalText?: string;
 }
 
 interface Props {
@@ -35,7 +36,8 @@ const { items } = Astro.props;
         altText={item.altText || item.badgeText}
         overlayText={item.overlayText}
         isHoverCard={true} 
-        inlineSvg={item.inlineSvg}/>
+        inlineSvg={item.inlineSvg}
+        externalText={item.externalText}/>
     </a>
   ))}
 </div>
@@ -46,7 +48,6 @@ const { items } = Astro.props;
     display: flex;
     gap: 20px;
     overflow-x: auto;
-    padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -65,7 +66,6 @@ const { items } = Astro.props;
     height: 6px;
   }
   .karrusel_container::-webkit-scrollbar-thumb {
-   
     border-radius: 4px;
   }
 

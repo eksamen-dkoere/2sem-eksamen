@@ -8,9 +8,27 @@ import DankortTilWallet from '../components/DankortTilWallet.astro';
 ---
 
 <Layout>
-    <main>
-<Breadcrumbs />
-<Findditkort/>
- <DankortTilWallet />
-</main>
+    <main >
+        <Breadcrumbs />
+        <div class="main_section">
+            <Findditkort/>
+            <DankortTilWallet />
+        </div>
+    </main>
 </Layout>
+
+<style>
+    .main_section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap-xxl);
+        padding: 0;
+	}
+
+    @media (max-width:768px){
+        .main_section {
+            gap: var(--gap-xl);
+            padding: 0 1rem;
+	    }
+    }
+</style>
