@@ -1,11 +1,11 @@
 ---
 //@ts-nocheck
-const { title, content, variant } = Astro.props;
+const { title, content } = Astro.props;
 ---
 
-<details class={`accordion ${variant}`}>
+<details class="accordion">
     <summary>
-        <h3>{title}</h3>
+        <h6>{title}</h6>
         <span class="accordion-icon"></span>
     </summary>
     <div class="accordion-content">
@@ -15,8 +15,8 @@ const { title, content, variant } = Astro.props;
 
 <style>
     .accordion { 
-        border-top: 1px solid var(--neutral-300);
-        padding: 1rem 0;
+        border-top: 1px solid var(--neutral-800);
+        padding: 1rem 1rem;
     }
 
     summary { 
@@ -39,29 +39,7 @@ const { title, content, variant } = Astro.props;
         margin-top: 1rem;
     }
 
-    /* ---- FARVER FOR LIGHTMODE VARIANT (Vises i Dark Mode html.dark) ---- */
-    .lightmode { 
-        border-color: var(--neutral-300);
-        color: var(--white); 
-    }
-
-    /* ---- FARVER FOR DARKMODE VARIANT (Vises i Light Mode) ---- */
-    .darkmode { 
-        border-color: var(--neutral-800);
-        color: var(--black); 
-    }
-
- /* ==========================================================================
-       LOGIK: SKJUL/VIS BASERET PÅ DARK MODE (Rettet med :global)
-       ========================================================================== */
-
-    /* Når siden er i Light Mode (html har IKKE .dark) -> Skjul variant="lightmode" */
-    :global(html:not(.dark)) .lightmode {
-        display: none !important;
-    }
-
-    /* Når siden er i Dark Mode (html HAR .dark) -> Skjul variant="darkmode" */
-    :global(html.dark) .darkmode {
-        display: none !important;
+    html.dark .accordion {
+        border-top: 1px solid var(--neutral-300);
     }
 </style>
