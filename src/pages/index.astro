@@ -12,6 +12,8 @@ import SocialsKarrusel from '../components/SocialsKarrusel.astro';
 import MerchCountdown from '../components/MerchCountdown.astro';
 import SamarbejdspartnerLandingpage from '../components/SamarbejdspartnereLandingpage.astro';
 import Blobs from '../components/Blobs.astro'
+import MobilKort from '../assets/mobil-rkort.svg';
+import PCKort from '../assets/roedtkort-desktop.svg';
 ---
 
 <Layout>
@@ -29,8 +31,8 @@ import Blobs from '../components/Blobs.astro'
 			</article>
 		</main>
 	
-		<img id="kortFortalt-dk" src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort" aria-hidden="true">
-   		<img id="desk-dk" src="/src/assets/roedtkort-desktop.svg" alt="Rødt Dankort" aria-hidden="true">
+		<img id="kortFortalt-dk" src={MobilKort.src} alt="Rødt Dankort" aria-hidden="true">
+   		<img id="desk-dk" src={PCKort.src} alt="Rødt Dankort" aria-hidden="true">
 	</div>
 </Layout>
 

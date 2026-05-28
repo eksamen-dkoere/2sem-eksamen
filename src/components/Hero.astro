@@ -26,18 +26,15 @@ import Buttons from '../components/Buttons.astro'
     </div>
    
     <div id="buttons-hero">
-    <Buttons
-    text="Læs om Øremærket"
-    variant="red500"/>
-
-    <Buttons
-     text="Bestil Dankort"
-     variant="secondary"/>
-
+      <Buttons
+        text="Læs om Øremærket"
+        variant="red500"
+        link="/om_os"/>
+      <a class="mobile-cta" href="https://dankort.dk" target="_blank" rel="noopener noreferrer">
+        <Buttons text="Bestil et Dankort" variant="secondary"/>
+      </a>
+    </div>
   </div>
-
-  </div>
-  
 </article>
 
 <style>

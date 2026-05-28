@@ -1,12 +1,15 @@
 ---
 import Pagination from '../components/Pagination.astro'
 import Blobs from '../components/Blobs.astro'
+import Dankort from '../assets/mobil-rkort.svg';
+import AndreKort from '../assets/mobil-gkort.svg';
+import KombiKort from '../assets/mobil-bkort.svg';
 ---
 <section>
     <h2 id="findditkorth2">Forskel på <b>Dankort</b> - og andre kort</h2>
     <div id="Find-dit-kort-grid">
         <div class="kort">
-            <img src="/src/assets/mobil-rkort.svg" alt="Rødt Dankort">
+            <img src={Dankort.src} alt="Rødt Dankort">
             <h3>Dankort</h3>
             <ul id="bullet">
                 <li>Dansk betalingsløsning</li>
@@ -16,7 +19,7 @@ import Blobs from '../components/Blobs.astro'
             </ul>
         </div>
         <div class="kort">
-            <img src="/src/assets/mobil-gkort.svg" alt="Grønt betalingskort">
+            <img src={AndreKort.src} alt="Grønt betalingskort">
             <h3>Andre kort</h3>
             <ul id="bullet">
                 <li>International betalingsløsning </li>
@@ -26,7 +29,7 @@ import Blobs from '../components/Blobs.astro'
             </ul>
         </div>
         <div class="kort">
-            <img src="/src/assets/mobil-bkort.svg" alt="Blåt kombikort">
+            <img src={KombiKort.src} alt="Blåt kombikort">
             <h3>Kombikort</h3>
             <ul id="bullet">
                 <li>Både dansk- og international betalingsløsning</li>
