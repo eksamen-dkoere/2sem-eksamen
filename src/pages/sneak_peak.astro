@@ -1,15 +1,16 @@
 ---
 //@ts-nocheck
+import '../styles/reset.css';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Countdown from '../components/Countdown.astro';
 import Pagination from '../components/Pagination.astro';
-import '../styles/effects.css';
-import '../styles/global.css';
-import '../styles/reset.css';
-import '../styles/typography.css';
-import '../styles/variables.css';
+import Blobs from '../components/Blobs.astro';
 
 
 const endpoint = "https://tkndfhivujdlyksacqma.supabase.co/rest/v1/Dankort-oeremaerket?select=*";
@@ -27,35 +28,47 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
 ---
 
 <Layout title="Merchandise">
-  <main>
-    <Breadcrumbs />
-    <section class="overordnet_grid main_section">
-      <div class="sneak_peak_indhold">
+  <div class="bg">
+    <main>
+      <Breadcrumbs />
+      <section class="overordnet_grid main_section">
+        <div class="sneak_peak_indhold">
+          <div>
+            <h2>Snart kan du bestille merchandise</h2>
+            <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
+          </div>
+          <p>Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond. Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere. Alle produkter er fremstillet af mindst 85% genanvendte materialer.</p>
+          <Countdown />
+        </div>
+
         <div>
-          <h2>Snart kan du bestille merchandise</h2>
-          <h3>100% af overskuddet doneres til Den Danske Naturfond</h3>
-        </div>
-        <p>Når du køber et produkt fra vores shop, doneres 100% af overskuddet til Den Danske Naturfond. Vores produkter er kun tilgængelige i en begrænset periode og er skabt i samarbejde med vores partnere. Alle produkter er fremstillet af mindst 85% genanvendte materialer.</p>
-        <Countdown />
-      </div>
+          <div class="product_grid">
+            {uniqueProducts.map((product) => (
+              <a class="product-item" href={`/${product.id}`}><Card 
+              badgeText={product.title} 
+              mediaUrl={product.image} 
+              altText={product.title}
+              /></a>
+            ))}
+          </div>
 
-      <div>
-        <div class="product_grid">
-          {uniqueProducts.map((product) => (
-            <a class="product-item" href={`/${product.id}`}><Card 
-            badgeText={product.title} 
-            mediaUrl={product.image} 
-            altText={product.title}
-            /></a>
-          ))}
+          <div class="pagination">
+            <Pagination current="0" />
+          </div>
         </div>
-
-        <div class="pagination">
-          <Pagination current="0" />
-        </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+    <div class="green-blob">
+      <Blobs 
+      color="green"
+      size="large"/>
+    </div>
+    <div class="blue-blob">
+      <Blobs 
+      color="blue"
+      size="large"/>
+    </div>
+  </div>
 </Layout>
 
 
@@ -97,11 +110,18 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
 </script>
 
 <style>
+  main {
+    margin-bottom: var(--gap-xl);
+  }
   .main_section {
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap-xl);
     padding: 0 1rem;
+	}
+  .bg {
+        position: relative;
+        overflow: hidden;
 	}
   .pagination {
     margin-top: var(--gap-s);
@@ -143,8 +163,24 @@ const { badgeText, mediaUrl, altText, href } = Astro.props;
     height: auto ;
     display: block ;
   }
-  
+
+  .green-blob {
+    position: absolute;
+    bottom: 200px;
+    left: -250px;
+  }
+
+  .blue-blob {
+		position: absolute;
+		bottom: 200px;
+		right: -250px;
+	}
+
+
   @media (min-width: 768px) {
+    main {
+      margin-bottom: var(--gap-xxl);
+    }
     .product_grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);

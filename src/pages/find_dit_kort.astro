@@ -20,6 +20,10 @@ import DankortTilWallet from '../components/DankortTilWallet.astro';
 </Layout>
 
 <style>
+    main {
+        margin-bottom: var(--gap-xxl);
+    }
+
     .bg {
 		position: relative;
 		overflow: hidden;
@@ -33,6 +37,9 @@ import DankortTilWallet from '../components/DankortTilWallet.astro';
 	}
 
     @media (max-width:768px){
+        main {
+            margin-bottom: var(--gap-xl);
+        }
         .main_section {
             gap: var(--gap-xl);
             padding: 0 1rem;
