@@ -44,9 +44,10 @@
 
     .darkmode-toggle:hover{
         background-color: rgba(var(--neutral-200-rgb), 0.5);
-        .toggle-thumb{
-            background-color: rgb(var(--neutral-200-rgb), 0.5);
-        }
+    }
+
+    .darkmode-toggle:hover .toggle-thumb {
+        background-color: rgba(var(--neutral-200-rgb), 0.5);
     }
 
     .toggle-thumb {
@@ -54,7 +55,7 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background-color: rgb(var(--neutral-200-rgb), 0.2);
+        background-color: rgba(var(--neutral-200-rgb), 0.2);
         box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
         top: 5px;
         left: 5px;
@@ -64,17 +65,19 @@
     /* DARK MODE */
 
     html.dark .darkmode-toggle {
-        background-color: rgb(var(--neutral-800-rgb), 0.2);
+        background-color: rgba(var(--neutral-800-rgb), 0.2);
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 11 11' fill='none'%3E%3Cpath d='M0.5 5.31374C0.5 8.17805 2.82158 10.5 5.68538 10.5C7.86738 10.5 9.73458 9.15203 10.5 7.24332C9.90276 7.48338 9.24923 7.61869 8.56614 7.61869C5.70231 7.61869 3.38077 5.29674 3.38077 2.43244C3.38077 1.75244 3.51405 1.09505 3.75194 0.5C1.84574 1.2666 0.5 3.13298 0.5 5.31374Z' stroke='%23FDFAF0' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");        background-repeat: no-repeat;
         background-position: 10px center;
         background-size: 12px 12px;
         box-shadow: var(--dropshadow-small), var(--innershadow-dark-small);
     }
+
     html.dark .darkmode-toggle:hover {
         background-color: rgba(var(--neutral-800-rgb), 0.50);
-        .toggle-thumb {
-            background: rgba(var(--neutral-300-rgb), 0.50);
-        }
+    }
+
+    html.dark .darkmode-toggle:hover .toggle-thumb {
+        background: rgba(var(--neutral-300-rgb), 0.50);
     }
 
     html.dark .toggle-thumb {
@@ -112,6 +115,4 @@
             transform: translateX(16px);
         }
     }
-
-
 </style>
