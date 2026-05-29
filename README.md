@@ -6,7 +6,8 @@ Dette projekt er vores eksamensprojekt, hvor vi har lavet et kampagnesite for Da
 
 ## Links
 
-- Netlify: https://dankortoere-eksamen.netlify.app/
+- Netlify:
+  https://2semeksamendk.netlify.app/
 - Github Repository:
   https://github.com/eksamen-dkoere/2sem-eksamen.git
 - Figma:
