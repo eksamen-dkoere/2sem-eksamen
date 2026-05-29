@@ -1,74 +1,106 @@
 ---
 //@ts-nocheck
+import '../styles/reset.css';
+import '../styles/effects.css';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/variables.css';
+
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Samarbejdspartner from '../components/Samarbejdspartner.astro';
 import Accordion from '../components/Accordion.astro';
 import OmOsKortMedTekst from '../components/OmOsKortMedTekst.astro';
-
-import '../styles/effects.css';
-import '../styles/global.css';
-import '../styles/reset.css';
-import '../styles/typography.css';
-import '../styles/variables.css';
+import Blobs from '../components/Blobs.astro';
 ---
 
 <Layout>
-    <main>  
-        <Breadcrumbs />
-        <section class="overall_grid"> 
-            
-            {/* TOP SECTION */}
-            <section class="top_section">
-                <div class="top_text">
-                    <h2>Det der betyder noget for os</h2>
-                    <p>Hos Dankort Øremærket tror vi på, at små handlinger kan gøre en stor forskel. Derfor har vi gjort det nemt at støtte gode formål gennem noget, vi allerede gør hver dag, at betale med Dankort. 
-                    <br><br>
-                    For os handler det om at betale smart, betale hurtigt og betale sikkert. En simpel løsning, hvor de små donationer, sker helt automatisk gennem de almindelige betalinger. Det er enkelt, og kræver ingen ekstra tid eller omkostninger for forbrugeren. Vi ønsker at skabe en troværdig og autentisk måde at støtte på. Her er hjælpen nemlig helt naturligt en del af din hverdag. 
-                    <br><br>
-                    Sammen med vores samarbejdspartnere er Dankort Øremærket med til at samle små bidrag, som vokser til reel forandring.
-                    Det skal føles organisk at gøre noget godt fordi ansvarlige valg ikke behøver være besværlige.</p>
-                </div>
+    <div class="bg">
+        <main>  
+            <Breadcrumbs />
+            <section class="overall_grid"> 
                 
-                {/* Repsmark billede (Rykket ud af sin egen div for nemmere styring) */}
-                <img src="/images/repsmark.webp" alt="Repsmark" class="img_repsmark glass">
+                {/* TOP SECTION */}
+                <section class="top_section">
+                    <div class="top_text">
+                        <h2>Det der betyder noget for os</h2>
+                        <p>Hos Dankort Øremærket tror vi på, at små handlinger kan gøre en stor forskel. Derfor har vi gjort det nemt at støtte gode formål gennem noget, vi allerede gør hver dag, at betale med Dankort. 
+                        <br><br>
+                        For os handler det om at betale smart, betale hurtigt og betale sikkert. En simpel løsning, hvor de små donationer, sker helt automatisk gennem de almindelige betalinger. Det er enkelt, og kræver ingen ekstra tid eller omkostninger for forbrugeren. Vi ønsker at skabe en troværdig og autentisk måde at støtte på. Her er hjælpen nemlig helt naturligt en del af din hverdag. 
+                        <br><br>
+                        Sammen med vores samarbejdspartnere er Dankort Øremærket med til at samle små bidrag, som vokser til reel forandring.
+                        Det skal føles organisk at gøre noget godt fordi ansvarlige valg ikke behøver være besværlige.</p>
+                    </div>
+                    
+                    {/* Repsmark billede (Rykket ud af sin egen div for nemmere styring) */}
+                    <img src="/images/repsmark.webp" alt="Repsmark" class="img_repsmark glass">
 
-                <div class="top_accordions">
-                    <Accordion title="Betal smart" content="Med Øremærket bliver dine betalinger til mere end bare et køb. Hver gang du betaler med Dankort, doneres der automatisk mindst 1 øre til dansk natur – uden at det koster dig ekstra. Et smart valg for både dig og fremtiden." />
-                    <Accordion title="Betal hurtigt" content="Dankort gør hverdagen nemmere. Du behøver ikke altid stoppe op og tjekke saldoen, før du betaler, da Dankort giver mulighed for fleksibilitet i øjeblikket. Hurtigt, enkelt og skabt til en travl hverdag."  />
-                    <Accordion title="Betal sikkert" content="Dankort er en del af den danske betalingsinfrastruktur og er udviklet med fokus på stabilitet og tryghed. Det betyder, at du kan føle dig sikker i dine betalinger – også hvis internationale betalingssystemer oplever tekniske problemer."  />
-                </div>
-            </section>
+                    <div class="top_accordions">
+                        <Accordion title="Betal smart" content="Med Øremærket bliver dine betalinger til mere end bare et køb. Hver gang du betaler med Dankort, doneres der automatisk mindst 1 øre til dansk natur – uden at det koster dig ekstra. Et smart valg for både dig og fremtiden." />
+                        <Accordion title="Betal hurtigt" content="Dankort gør hverdagen nemmere. Du behøver ikke altid stoppe op og tjekke saldoen, før du betaler, da Dankort giver mulighed for fleksibilitet i øjeblikket. Hurtigt, enkelt og skabt til en travl hverdag."  />
+                        <Accordion title="Betal sikkert" content="Dankort er en del af den danske betalingsinfrastruktur og er udviklet med fokus på stabilitet og tryghed. Det betyder, at du kan føle dig sikker i dine betalinger – også hvis internationale betalingssystemer oplever tekniske problemer."  />
+                    </div>
+                </section>
 
-            {/* MIDDLE SECTION */}
-            <section class="middle_section">
-                <div class="middle_text">
-                    <h2>Dankort Øremærket</h2>
-                    <h3>- Vi donerer til Den Danske Naturfond</h3>
-                    <p>Dankort Øremærket er et initiativ fra Dankort, der har til formål at styrke den danske natur, gennem donationer til Den Danske Naturfond. 
-                    Dankort garanterer mindst 10. mio kr. i årlige donationer til Den Danske Naturfond. Uanset om du betaler med fysisk eller virtuelt kort - donerer Dankort minimum 1 øre til fonden.
-                    Det vil altså sige at når du betaler med Dankort er du med til at donerer op til 3 øre pr. transaktion</p>
-                     <OmOsKortMedTekst />
-                </div>
-                
-                {/* Luftballon billede (Placeret efter teksten i HTML, så det naturligt ligger nederst på mobil) */}
-                <img src="/images/luftballon.webp" alt="luftballon" class="img_luftballon glass">
-            </section>
+                {/* MIDDLE SECTION */}
+                <section class="middle_section">
+                    <div class="middle_text">
+                        <h2>Dankort Øremærket</h2>
+                        <h3>- Vi donerer til Den Danske Naturfond</h3>
+                        <p>Dankort Øremærket er et initiativ fra Dankort, der har til formål at styrke den danske natur, gennem donationer til Den Danske Naturfond. 
+                        Dankort garanterer mindst 10. mio kr. i årlige donationer til Den Danske Naturfond. Uanset om du betaler med fysisk eller virtuelt kort - donerer Dankort minimum 1 øre til fonden.
+                        Det vil altså sige at når du betaler med Dankort er du med til at donerer op til 3 øre pr. transaktion</p>
+                        <OmOsKortMedTekst />
+                    </div>
+                    
+                    {/* Luftballon billede (Placeret efter teksten i HTML, så det naturligt ligger nederst på mobil) */}
+                    <img src="/images/luftballon.webp" alt="luftballon" class="img_luftballon glass">
+                </section>
 
-            {/* SAMARBEJDSPARTNER */}
-            <section class="samarbejdspartner">
-                <div class="text">
-                    <h2>Vores samarbejdspartnere</h2>
-                    <p>Dankort Øremærket og deres samarbejdspartnere gør det muligt for dig at støtte nemt og enkelt til Den Danske Naturfond. Gennem deres samarbejde fra bank til butikker gør du en forskel i hverdagen. Og sammen med dem, vokser de små donationer sig større og større. Hver gang du betaler med Dankort hos en tilknyttet samarbejdspartner kan både banken og butikken bidrage en øre til initiativet. På den måde er vores samarbejdspartnere med til at gøre et bæredygtigt initiativ mere tilgængeligt for den almindelige bruger.</p>
-                </div>
-                <Samarbejdspartner/>
+                {/* SAMARBEJDSPARTNER */}
+                <section class="samarbejdspartner">
+                    <div class="text">
+                        <h2>Vores samarbejdspartnere</h2>
+                        <p>Dankort Øremærket og deres samarbejdspartnere gør det muligt for dig at støtte nemt og enkelt til Den Danske Naturfond. Gennem deres samarbejde fra bank til butikker gør du en forskel i hverdagen. Og sammen med dem, vokser de små donationer sig større og større. Hver gang du betaler med Dankort hos en tilknyttet samarbejdspartner kan både banken og butikken bidrage en øre til initiativet. På den måde er vores samarbejdspartnere med til at gøre et bæredygtigt initiativ mere tilgængeligt for den almindelige bruger.</p>
+                    </div>
+                    <Samarbejdspartner/>
+                </section>
             </section>
-        </section>
-    </main>
+        </main>
+        <div class="yellow-blob">
+            <Blobs 
+            color="yellow"
+            size="extra_large"/>
+        </div>
+        <div class="blue-blob">
+            <Blobs 
+            color="blue"
+            size="large"/>
+        </div>
+        <div class="green-blob">
+            <Blobs 
+            color="green"
+            size="large"/>
+        </div>
+        <div class="red-blob">
+            <Blobs 
+            color="red"
+            size="large"/>
+        </div>
+    </div>
 </Layout>
 
 <style>
+    main {
+        margin-bottom: var(--gap-xl);
+    }
+
+    .bg {
+        position: relative;
+        overflow: hidden;
+	}
+
     img {
         border-radius: var(--radius-l);
         width: 100%; /* Sikrer de ikke sprænger rammerne på mobil */
@@ -110,14 +142,41 @@ import '../styles/variables.css';
         gap: 1.5rem;
     }
 
+    .yellow-blob {
+		position: absolute;
+		top: -200px;
+		right: -250px;
+	}
+
+    .blue-blob {
+		position: absolute;
+		top: 1400px;
+		left: -250px;
+	}
+
+    .green-blob {
+		position: absolute;
+		bottom: 500px;
+		left: -250px;
+	}
+
+    .red-blob {
+		position: absolute;
+		bottom: 500px;
+		right: -250px;
+	}
 
     /* ========================================================
        DESKTOP STYLING (Fra 768px og op)
        ======================================================== */
     @media (min-width: 768px) {
+        main {
+            margin-bottom: var(--gap-xxl);
+        }
+
         .overall_grid {
-        padding: 0;
-    }
+            padding: 0;
+        }
 
         /* Vi nulstiller rækkefølgen på top_section og laver det 2-spaltet */
         .top_section {
@@ -148,6 +207,26 @@ import '../styles/variables.css';
         .middle_text {
             grid-column: 2;
             grid-row: 1;
+        }
+
+        .yellow-blob {
+            top: 100px;
+            right: 300px;
+        }
+
+        .blue-blob {
+            top: 900px;
+            left: 0px;
+        }
+
+        .green-blob {
+            bottom: 200px;
+            left: -200px;
+        }
+
+        .red-blob {
+            bottom: 200px;
+            right: -200px;
         }
     }
 </style>

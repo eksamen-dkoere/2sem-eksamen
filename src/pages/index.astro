@@ -37,12 +37,17 @@ import PCKort from '../assets/roedtkort-desktop.svg';
 </Layout>
 
 <style>
+	main {
+    	margin-bottom: var(--gap-xl);
+  	}
+
 	.main_section {
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap-xl);
 		padding: 0 1rem;
 	}
+
 	.bg {
 		position: relative;
 		overflow: hidden;
@@ -61,6 +66,10 @@ import PCKort from '../assets/roedtkort-desktop.svg';
 	}
 
 	@media (min-width: 768px) {
+		main {
+    		margin-bottom: var(--gap-xxl);
+  		}
+
 		.main_section {
 			display: flex;
 			flex-direction: column;
@@ -68,6 +77,7 @@ import PCKort from '../assets/roedtkort-desktop.svg';
 			padding: 0;
 			z-index: 100;
 		}
+
 		#kortFortalt-dk {
 			display: none;
 		}

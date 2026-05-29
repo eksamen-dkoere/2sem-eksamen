@@ -102,6 +102,10 @@ const mineManuelleKort = [
 </div>
 
 <style>
+section {
+  z-index: 1000;
+}
+
   .pagination {
     margin-top: var(--gap-s);
     display:flex;
@@ -126,20 +130,20 @@ const mineManuelleKort = [
 
   .green-blob {
 		position: absolute;
-		bottom: -200px;
-		left: -200px;
+		bottom: 100px;
+		left: 100px;
 	} 
 
     .red-blob {
 		position: absolute;
-		bottom: -200px;
-		left: -200px;
+		bottom: 350px;
+		left: -50px;
 	} 
 
     .blue-blob {
 		position: absolute;
-		bottom: -200px;
-		right: -200px;
+		bottom: 150px;
+		right: -400px;
 	} 
 
   @media (min-width: 768px) {
@@ -147,18 +151,18 @@ const mineManuelleKort = [
       display: none;
     }
     .green-blob {
-            bottom: 0;
-            left: -200px;
+            bottom: 100px;
+            left: 50px;
         } 
 
         .red-blob {
-            bottom: -200px;
-            left: -200px;
+            bottom: 400px;
+            left: 400px;
         } 
 
         .blue-blob {
-            bottom: -200px;
-            right: -200px;
+            bottom: 100px;
+            right: 50px;
         } 
   }
 </style>
